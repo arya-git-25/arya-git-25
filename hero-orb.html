@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Orb Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #07090f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+}
+
+/* ── ORB WRAPPER ── */
+.orb-scene {
+  position: relative;
+  width: 520px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── OUTER GLOW RING ── */
+.orb-ring {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  animation: ring-rotate 8s linear infinite;
+}
+
+.orb-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 2px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    #6c47ff 15%,
+    #3b82f6 30%,
+    #06b6d4 45%,
+    #a855f7 60%,
+    transparent 75%,
+    #6c47ff 90%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: ring-color 4s linear infinite;
+}
+
+@keyframes ring-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── INNER ORB BODY ── */
+.orb-body {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 35% 35%,
+    rgba(168, 85, 247, 0.25) 0%,
+    rgba(108, 71, 255, 0.18) 25%,
+    rgba(59, 130, 246, 0.12) 50%,
+    rgba(6, 182, 212, 0.08) 75%,
+    transparent 100%
+  );
+  border: 1px solid rgba(108, 71, 255, 0.15);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50%       { transform: scale(1.04); opacity: 1; }
+}
+
+/* ── COLOR SHIFTING INNER GLOW ── */
+.orb-glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  animation: glow-shift 6s ease-in-out infinite;
+}
+
+@keyframes glow-shift {
+  0%   { background: radial-gradient(circle at 40% 40%, rgba(108,71,255,0.4) 0%, rgba(59,130,246,0.2) 40%, transparent 70%); }
+  25%  { background: radial-gradient(circle at 60% 30%, rgba(168,85,247,0.45) 0%, rgba(108,71,255,0.2) 40%, transparent 70%); }
+  50%  { background: radial-gradient(circle at 60% 60%, rgba(6,182,212,0.4) 0%, rgba(59,130,246,0.2) 40%, transparent 70%); }
+  75%  { background: radial-gradient(circle at 30% 60%, rgba(59,130,246,0.45) 0%, rgba(168,85,247,0.2) 40%, transparent 70%); }
+  100% { background: radial-gradient(circle at 40% 40%, rgba(108,71,255,0.4) 0%, rgba(59,130,246,0.2) 40%, transparent 70%); }
+}
+
+/* ── PARTICLE DOTS ── */
+.particles {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: particle-drift linear infinite;
+}
+
+@keyframes particle-drift {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-180px) translateX(var(--dx)) scale(0.3); opacity: 0; }
+}
+
+/* ── OUTER AMBIENT GLOW (behind orb) ── */
+.orb-ambient {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  animation: ambient-shift 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes ambient-shift {
+  0%,100% { box-shadow: 0 0 80px 20px rgba(108,71,255,0.12), 0 0 160px 40px rgba(59,130,246,0.06); }
+  33%      { box-shadow: 0 0 80px 20px rgba(168,85,247,0.14), 0 0 160px 40px rgba(6,182,212,0.08); }
+  66%      { box-shadow: 0 0 80px 20px rgba(6,182,212,0.12), 0 0 160px 40px rgba(108,71,255,0.06); }
+}
+
+/* ── SECOND RING (counter-rotate) ── */
+.orb-ring-2 {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  animation: ring-rotate-rev 12s linear infinite;
+}
+
+.orb-ring-2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(
+    from 180deg,
+    transparent 0%,
+    rgba(6,182,212,0.6) 20%,
+    transparent 40%,
+    rgba(168,85,247,0.4) 70%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@keyframes ring-rotate-rev {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+/* ── TEXT CONTENT ── */
+.orb-text {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.orb-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  margin-bottom: 16px;
+  font-weight: 400;
+  animation: text-fade-in 1s ease 0.3s both;
+}
+
+.orb-headline {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 14px;
+  animation: text-fade-in 1s ease 0.5s both;
+}
+
+.orb-headline .line1 { color: #f1f5ff; display: block; }
+.orb-headline .line2 {
+  display: block;
+  background: linear-gradient(90deg, #a78bfa, #60a5fa, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: text-fade-in 1s ease 0.5s both, grad-flow 4s linear infinite;
+}
+
+@keyframes grad-flow {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.orb-sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: #8b99c0;
+  line-height: 1.7;
+  max-width: 280px;
+  margin: 0 auto;
+  animation: text-fade-in 1s ease 0.7s both;
+}
+
+@keyframes text-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SCAN LINE EFFECT ── */
+.orb-scan {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb-scan::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(108,71,255,0.5), rgba(6,182,212,0.5), transparent);
+  animation: scan-line 3s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(108,71,255,0.4);
+}
+
+@keyframes scan-line {
+  0%   { top: 10%;  opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { top: 90%; opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="orb-scene">
+
+  <!-- Ambient background glow -->
+  <div class="orb-ambient"></div>
+
+  <!-- Outer rotating ring -->
+  <div class="orb-ring"></div>
+
+  <!-- Second counter-rotating ring -->
+  <div class="orb-ring-2"></div>
+
+  <!-- Main orb body -->
+  <div class="orb-body"></div>
+
+  <!-- Color-shifting inner glow -->
+  <div class="orb-glow"></div>
+
+  <!-- Scan line effect -->
+  <div class="orb-scan"></div>
+
+  <!-- Floating particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Text content -->
+  <div class="orb-text">
+    <div class="orb-eyebrow">Lead Web Developer · Dubai</div>
+    <div class="orb-headline">
+      <span class="line1">Full-Stack</span>
+      <span class="line2">AI-Powered</span>
+      <span class="line1" style="font-size:28px; font-weight:300; letter-spacing:-0.01em;">Engineer</span>
+    </div>
+    <p class="orb-sub">Building the digital future of UAE — one system at a time.</p>
+  </div>
+
+</div>
+
+<script>
+/* ── Generate floating particles ── */
+const container = document.getElementById('particles');
+const colors = [
+  'rgba(108,71,255,0.8)',
+  'rgba(59,130,246,0.8)',
+  'rgba(6,182,212,0.8)',
+  'rgba(168,85,247,0.8)',
+  'rgba(167,139,250,0.7)',
+];
+
+for (let i = 0; i < 28; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+
+  const size = Math.random() * 3 + 1;
+  const x = Math.random() * 380;
+  const y = Math.random() * 380 + 60;
+  const dx = (Math.random() - 0.5) * 80;
+  const dur = Math.random() * 4 + 3;
+  const delay = Math.random() * 5;
+  const color = colors[Math.floor(Math.random() * colors.length)];
+
+  p.style.cssText = `
+    width: ${size}px;
+    height: ${size}px;
+    left: ${x}px;
+    top: ${y}px;
+    background: ${color};
+    --dx: ${dx}px;
+    animation-duration: ${dur}s;
+    animation-delay: -${delay}s;
+    box-shadow: 0 0 ${size * 3}px ${color};
+  `;
+  container.appendChild(p);
+}
+</script>
+</body>
+</html>
