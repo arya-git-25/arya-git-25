@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Stocks: Crisis Recovery & Value Opportunities</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f7f2; color: #1a1a1a; font-size: 15px; line-height: 1.6; }
+
+  .header { background: #1a1a2e; color: #fff; padding: 2rem 1.5rem 1.5rem; text-align: center; }
+  .header h1 { font-size: 22px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.3px; }
+  .header p { font-size: 13px; color: #a0aec0; }
+
+  .crisis-banner { background: #16213e; padding: 1rem 1.5rem; overflow-x: auto; white-space: nowrap; }
+  .crisis-pills { display: inline-flex; gap: 10px; }
+  .crisis-pill { display: inline-flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 8px 14px; min-width: 110px; }
+  .crisis-pill .year { font-size: 14px; font-weight: 600; color: #e2b96a; }
+  .crisis-pill .label { font-size: 11px; color: #90a0b7; margin-top: 1px; }
+  .crisis-pill .drop { font-size: 12px; color: #f87171; font-weight: 500; margin-top: 2px; }
+
+  .nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 1rem; overflow-x: auto; white-space: nowrap; position: sticky; top: 0; z-index: 100; }
+  .nav-inner { display: inline-flex; gap: 0; }
+  .nav-btn { background: none; border: none; border-bottom: 2px solid transparent; padding: 12px 14px; font-size: 12px; font-weight: 500; color: #666; cursor: pointer; white-space: nowrap; transition: color 0.15s; }
+  .nav-btn:hover { color: #1a1a2e; }
+  .nav-btn.active { color: #1a1a2e; border-bottom-color: #e2b96a; }
+
+  .sector-section { display: none; padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
+  .sector-section.active { display: block; }
+
+  .sector-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #e5e5e5; }
+  .sector-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .sector-title { font-size: 20px; font-weight: 600; }
+  .sector-subtitle { font-size: 13px; color: #666; margin-top: 2px; }
+
+  .crash-reason-box { background: #fff8ed; border: 1px solid #f5d88c; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+  .crash-reason-box h3 { font-size: 13px; font-weight: 600; color: #8a6000; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .crash-reason-box p { font-size: 13px; color: #5a4000; line-height: 1.6; }
+
+  .stocks-grid { display: grid; gap: 12px; }
+
+  .stock-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; }
+  .stock-card-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px 10px; border-bottom: 1px solid #f0f0f0; gap: 10px; }
+  .stock-left { display: flex; align-items: center; gap: 10px; }
+  .stock-rank { width: 24px; height: 24px; border-radius: 6px; background: #1a1a2e; color: #e2b96a; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .stock-name { font-size: 15px; font-weight: 600; color: #1a1a2e; }
+  .stock-ticker { font-size: 11px; color: #888; margin-top: 1px; }
+  .stock-price-box { text-align: right; flex-shrink: 0; }
+  .stock-price { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+  .stock-price small { font-size: 11px; font-weight: 400; color: #888; }
+  .stock-high { font-size: 11px; color: #d97706; margin-top: 2px; }
+
+  .stock-card-body { padding: 10px 14px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stock-stat { }
+  .stock-stat label { font-size: 11px; color: #888; display: block; }
+  .stock-stat value { font-size: 13px; font-weight: 500; color: #1a1a2e; }
+
+  .why-fall { grid-column: 1 / -1; background: #fef2f2; border-radius: 8px; padding: 8px 10px; font-size: 12px; color: #7f1d1d; line-height: 1.5; margin-top: 4px; }
+  .why-fall strong { font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; display: block; margin-bottom: 3px; color: #991b1b; }
+
+  .recovery-bar { grid-column: 1 / -1; margin-top: 4px; }
+  .recovery-bar label { font-size: 11px; color: #888; display: block; margin-bottom: 4px; }
+  .bar-track { background: #f0f0f0; border-radius: 4px; height: 6px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #1a1a2e, #e2b96a); }
+
+  .promise-badge { display: inline-flex; align-items: center; gap: 4px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 2px 8px; font-size: 11px; color: #15803d; font-weight: 500; }
+  .etf-badge { display: inline-flex; align-items: center; gap: 4px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 2px 8px; font-size: 11px; color: #1d4ed8; font-weight: 500; }
+  .value-badge { display: inline-flex; align-items: center; gap: 4px; background: #fefce8; border: 1px solid #fde68a; border-radius: 6px; padding: 2px 8px; font-size: 11px; color: #a16207; font-weight: 500; }
+
+  .badges { display: flex; gap: 5px; flex-wrap: wrap; grid-column: 1 / -1; margin-top: 2px; }
+
+  .disclaimer { background: #fff; border-top: 1px solid #e5e5e5; padding: 1rem 1.5rem; text-align: center; font-size: 12px; color: #888; }
+  .disclaimer strong { color: #666; }
+
+  @media (min-width: 700px) {
+    .stocks-grid { grid-template-columns: 1fr 1fr; }
+    .stock-card-header { flex-wrap: nowrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Indian Stocks: Crisis Recovery &amp; Value Opportunities</h1>
+  <p>10 Sectors · 10 Stocks Each · 25-Year Crisis History · Current Undervalued Picks · NSE/BSE</p>
+</div>
+
+<div class="crisis-banner">
+  <div class="crisis-pills">
+    <div class="crisis-pill">
+      <span class="year">2000–01</span>
+      <span class="label">Dot-com Bust</span>
+      <span class="drop">Sensex –56%</span>
+    </div>
+    <div class="crisis-pill">
+      <span class="year">2008–09</span>
+      <span class="label">Global Financial Crisis</span>
+      <span class="drop">Sensex –60%</span>
+    </div>
+    <div class="crisis-pill">
+      <span class="year">2011–12</span>
+      <span class="label">Euro Debt Crisis</span>
+      <span class="drop">Sensex –25%</span>
+    </div>
+    <div class="crisis-pill">
+      <span class="year">2015–16</span>
+      <span class="label">China Slowdown</span>
+      <span class="drop">Sensex –26%</span>
+    </div>
+    <div class="crisis-pill">
+      <span class="year">2018–19</span>
+      <span class="label">IL&amp;FS / NBFC Crisis</span>
+      <span class="drop">Midcap –42%</span>
+    </div>
+    <div class="crisis-pill">
+      <span class="year">2020</span>
+      <span class="label">COVID-19 Crash</span>
+      <span class="drop">Sensex –40%</span>
+    </div>
+    <div class="crisis-pill">
+      <span class="year">2024–25</span>
+      <span class="label">FII Exodus / Global</span>
+      <span class="drop">Nifty –15%</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSector('banking')">Banking</button>
+    <button class="nav-btn" onclick="showSector('pharma')">Pharma</button>
+    <button class="nav-btn" onclick="showSector('it')">IT</button>
+    <button class="nav-btn" onclick="showSector('fmcg')">FMCG</button>
+    <button class="nav-btn" onclick="showSector('energy')">Energy</button>
+    <button class="nav-btn" onclick="showSector('metals')">Metals</button>
+    <button class="nav-btn" onclick="showSector('auto')">Auto</button>
+    <button class="nav-btn" onclick="showSector('infra')">Infra</button>
+    <button class="nav-btn" onclick="showSector('realty')">Realty</button>
+    <button class="nav-btn" onclick="showSector('etf')">ETF/BeES</button>
+  </div>
+</nav>
+
+<!-- ===== BANKING ===== -->
+<div id="sector-banking" class="sector-section active">
+  <div class="sector-header">
+    <div class="sector-icon" style="background:#dbeafe;">🏦</div>
+    <div>
+      <div class="sector-title">Banking &amp; Financial Services</div>
+      <div class="sector-subtitle">India's largest sector by market cap — always leads recovery after every crisis</div>
+    </div>
+  </div>
+  <div class="crash-reason-box">
+    <h3>Why banking falls in every crisis</h3>
+    <p>Banks are the first victims of every crisis because fear of Non-Performing Assets (NPAs) spikes, credit growth halts, and FII (foreign institutional) investors flee. In 2008, global liquidity dried up. In 2018, the IL&FS/NBFC collapse froze lending. In 2020, COVID moratoriums threatened mass defaults. In 2024–25, RBI's tightening and FII outflows (₹1.6 lakh crore exited in FY26) hammered valuations. Yet Indian banks have recovered powerfully every single time because India's credit-to-GDP ratio remains low (~55%) vs. global peers, giving banks a massive runway for future growth.</p>
+  </div>
+  <div class="stocks-grid">
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">1</div><div><div class="stock-name">HDFC Bank</div><div class="stock-ticker">NSE: HDFCBANK</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,680 <small>/share</small></div><div class="stock-high">52W High: ₹1,880</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹12.8 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>17.2x (cheap)</value></div>
+        <div class="stock-stat"><label>ROE</label><value>16.5%</value></div>
+        <div class="stock-stat"><label>NPA Gross</label><value>1.26%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Global credit freeze. 2020: COVID moratorium fears. 2022–24: HDFC merger overhang slowed deposit growth, compressing margins and triggering FII selling. Now trading ~10% below merger highs — the integration discount is fading.</div>
+        <div class="badges"><span class="promise-badge">Strong Buy</span><span class="value-badge">Value Pick</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">2</div><div><div class="stock-name">ICICI Bank</div><div class="stock-ticker">NSE: ICICIBANK</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,290 <small>/share</small></div><div class="stock-high">52W High: ₹1,380</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹9.1 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>18.8x</value></div>
+        <div class="stock-stat"><label>ROE</label><value>17.8%</value></div>
+        <div class="stock-stat"><label>NPA Gross</label><value>1.96%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Exposure to overseas structured products. 2012–16: Massive NPA pile-up (steel/infra loans). CEO change in 2018 triggered panic. 2024: FII exodus. Now best-in-class asset quality with industry-lowest NPAs — the NPA fears are gone.</div>
+        <div class="badges"><span class="promise-badge">Strong Buy</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">3</div><div><div class="stock-name">State Bank of India</div><div class="stock-ticker">NSE: SBIN</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹795 <small>/share</small></div><div class="stock-high">52W High: ₹912</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹7.1 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>9.2x (very cheap)</value></div>
+        <div class="stock-stat"><label>ROE</label><value>18.3%</value></div>
+        <div class="stock-stat"><label>NPA Gross</label><value>2.24%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: PSU bank risk perception. 2015–18: Worst NPA crisis (₹2L Cr bad loans from infra/power sector). 2024: FII selling of PSU stocks. Now cleaned up — lowest NPA in decade, dividend yield 2.8%, trading at P/B 1.5x vs justified 2x+.</div>
+        <div class="badges"><span class="promise-badge">Strong Buy</span><span class="value-badge">Deep Value</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">4</div><div><div class="stock-name">Kotak Mahindra Bank</div><div class="stock-ticker">NSE: KOTAKBANK</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,980 <small>/share</small></div><div class="stock-high">52W High: ₹2,155</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹3.9 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>20.1x</value></div>
+        <div class="stock-stat"><label>ROE</label><value>14.2%</value></div>
+        <div class="stock-stat"><label>NPA Gross</label><value>1.49%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: All banks fell together. 2021: RBI banned Kotak from issuing credit cards digitally (technology non-compliance). 2023–24: CEO Uday Kotak stepped down, creating succession uncertainty. Price corrected ~18% from peak. Fundamentals remain pristine.</div>
+        <div class="badges"><span class="promise-badge">Strong Hold/Buy</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">5</div><div><div class="stock-name">Axis Bank</div><div class="stock-ticker">NSE: AXISBANK</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,125 <small>/share</small></div><div class="stock-high">52W High: ₹1,339</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹3.5 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>12.4x (cheap)</value></div>
+        <div class="stock-stat"><label>ROE</label><value>17.5%</value></div>
+        <div class="stock-stat"><label>NPA Gross</label><value>1.43%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Corporate lending exposure. 2015–18: Large corporate NPA cycle hit Axis badly (telecom/steel/power). 2024: Citibank credit card integration costs dragged margins. Now trading at ~16% discount to fair value — biggest value among private banks.</div>
+        <div class="badges"><span class="value-badge">Deep Value</span><span class="promise-badge">Buy on Dip</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">6</div><div><div class="stock-name">Bank of Baroda</div><div class="stock-ticker">NSE: BANKBARODA</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹228 <small>/share</small></div><div class="stock-high">52W High: ₹299</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.18 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>5.9x (very cheap)</value></div>
+        <div class="stock-stat"><label>ROE</label><value>17.2%</value></div>
+        <div class="stock-stat"><label>NPA Gross</label><value>2.92%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008 & 2015–18: PSU banks bore the brunt of bad infra/corporate loans. Dena Bank and Vijaya Bank merger (2019) added legacy NPAs. 2024: General FII sell-off in PSU banks. Massive undervaluation at 5.9x P/E vs 12x fair value.</div>
+        <div class="badges"><span class="value-badge">Contrarian Value</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">7</div><div><div class="stock-name">Canara Bank</div><div class="stock-ticker">NSE: CANARABANK</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹98 <small>/share</small></div><div class="stock-high">52W High: ₹128</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹89,000 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>5.4x</value></div>
+        <div class="stock-stat"><label>ROE</label><value>19.8%</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>3.2%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Absorbed Syndicate Bank (2020) which brought legacy NPAs. PSU discount by market — high ROE (~20%) completely ignored. Trading at fraction of private bank peers. Dividend income makes the wait worthwhile.</div>
+        <div class="badges"><span class="value-badge">Income + Value</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">8</div><div><div class="stock-name">Bajaj Finance</div><div class="stock-ticker">NSE: BAJFINANCE</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹8,450 <small>/share</small></div><div class="stock-high">52W High: ₹9,850</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹5.25 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>28x</value></div>
+        <div class="stock-stat"><label>ROE</label><value>22.4%</value></div>
+        <div class="stock-stat"><label>AUM Growth</label><value>28% YoY</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2018: IL&FS crisis hit all NBFCs (guilt by association). 2020: COVID fears of mass consumer loan defaults. 2022–24: RBI scrutiny on unsecured lending, rate hikes compressed spreads. Currently ~14% off peak — dip into India's #1 consumer finance compounder.</div>
+        <div class="badges"><span class="promise-badge">Quality Compounder</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">9</div><div><div class="stock-name">IndusInd Bank</div><div class="stock-ticker">NSE: INDUSINDBK</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹985 <small>/share</small></div><div class="stock-high">52W High: ₹1,576</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹76,700 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>9.8x (very cheap)</value></div>
+        <div class="stock-stat"><label>ROE</label><value>14.5%</value></div>
+        <div class="stock-stat"><label>NPA</label><value>2.1%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:68%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2024–25: Accounting discrepancy found in derivatives book (₹1,500 Cr impact), CEO transition concerns, microfinance portfolio stress. Stock crashed ~37% from highs. Historically proven recovery bank — bought out in every crisis by value investors.</div>
+        <div class="badges"><span class="value-badge">High Risk / High Reward</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">10</div><div><div class="stock-name">Union Bank of India</div><div class="stock-ticker">NSE: UNIONBANK</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹118 <small>/share</small></div><div class="stock-high">52W High: ₹168</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹89,000 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>6.2x</value></div>
+        <div class="stock-stat"><label>ROE</label><value>16.1%</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>3.5%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Absorbed Andhra Bank and Corporation Bank (2020) — legacy NPA burden. FII anti-PSU sentiment. Government ownership seen as bureaucratic drag. But credit cost is normalizing and ROE has recovered meaningfully. Deeply cheap vs. fair value.</div>
+        <div class="badges"><span class="value-badge">Contrarian Buy</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== PHARMA ===== -->
+<div id="sector-pharma" class="sector-section">
+  <div class="sector-header">
+    <div class="sector-icon" style="background:#fce7f3;">💊</div>
+    <div>
+      <div class="sector-title">Pharmaceuticals &amp; Healthcare</div>
+      <div class="sector-subtitle">Defensive sector that thrives in crisis — India is the pharmacy of the world</div>
+    </div>
+  </div>
+  <div class="crash-reason-box">
+    <h3>Why pharma falls in crisis</h3>
+    <p>Indian pharma's biggest risk is the US FDA — import alerts and facility bans cause sharp, sudden drops. In 2015–18, a wave of US FDA warning letters to Indian plants (Dr Reddy's, Sun Pharma, Wockhardt) caused 30–50% crashes. In 2020, supply chain fears hit first, then rallied strongly. In 2024–25, US tariff uncertainty on pharmaceutical imports from India spooked investors. The underlying business (India generics + US market) remains a long-term compounder. Every FDA-linked fall is historically a buying opportunity.</p>
+  </div>
+  <div class="stocks-grid">
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">1</div><div><div class="stock-name">Sun Pharmaceutical</div><div class="stock-ticker">NSE: SUNPHARMA</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,720 <small>/share</small></div><div class="stock-high">52W High: ₹1,960</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹4.1 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>31x</value></div>
+        <div class="stock-stat"><label>US Revenue %</label><value>30% of sales</value></div>
+        <div class="stock-stat"><label>Specialty Growth</label><value>22% YoY</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2015–16: Halol manufacturing plant received US FDA warning letter — stock fell 35%. 2018: CEO Dilip Shanghvi's brother-in-law controversy. 2024: US tariff fears on generics. Now specialty drugs (Ilumya, Cequa) building a premium revenue stream.</div>
+        <div class="badges"><span class="promise-badge">Sector Leader</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">2</div><div><div class="stock-name">Dr Reddy's Laboratories</div><div class="stock-ticker">NSE: DRREDDY</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹5,920 <small>/share</small></div><div class="stock-high">52W High: ₹7,100</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹98,400 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>19.4x</value></div>
+        <div class="stock-stat"><label>US Generic Filings</label><value>100+ pending</value></div>
+        <div class="stock-stat"><label>Revenue (FY25)</label><value>₹31,000 Cr</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2015–16: FDA import alert on Srikakulam and Duvvada plants — stock collapsed 30% in weeks. 2020: COVID supply uncertainty. 2024: US tariff fears. Trading ~17% below 52W high — historically strong buyer here.</div>
+        <div class="badges"><span class="value-badge">Value Zone</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">3</div><div><div class="stock-name">Cipla</div><div class="stock-ticker">NSE: CIPLA</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,510 <small>/share</small></div><div class="stock-high">52W High: ₹1,702</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.22 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>24.8x</value></div>
+        <div class="stock-stat"><label>Africa Revenue</label><value>Fast-growing</value></div>
+        <div class="stock-stat"><label>India Rank</label><value>3rd largest</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:83%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: General market selloff. 2016: Price negotiations with US buyers compressed margins. 2020: Short-term supply chain disruption. 2022: Promoter family succession uncertainty. Now recovering — respiratory drug portfolio + US specialty driving growth.</div>
+        <div class="badges"><span class="promise-badge">Steady Compounder</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">4</div><div><div class="stock-name">Divi's Laboratories</div><div class="stock-ticker">NSE: DIVISLAB</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹5,680 <small>/share</small></div><div class="stock-high">52W High: ₹6,360</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.51 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>64x (premium)</value></div>
+        <div class="stock-stat"><label>ROE</label><value>22%</value></div>
+        <div class="stock-stat"><label>Business</label><value>API/CRAMS</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:87%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022–23: Post-COVID demand normalization — API prices crashed globally as inventory glut built up. Revenue fell 20%+ causing panic selling. 2024: Slow recovery pace disappointed. Now bouncing back on China+1 API sourcing shift by global pharma MNCs.</div>
+        <div class="badges"><span class="promise-badge">China+1 Beneficiary</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">5</div><div><div class="stock-name">Apollo Hospitals</div><div class="stock-ticker">NSE: APOLLOHOSP</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹6,890 <small>/share</small></div><div class="stock-high">52W High: ₹7,545</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹98,500 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>72x</value></div>
+        <div class="stock-stat"><label>Beds</label><value>10,000+</value></div>
+        <div class="stock-stat"><label>Apollo HealthCo</label><value>High growth</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: COVID shut elective surgeries — hospital revenues collapsed 30–40% overnight. 2022: High debt from new hospital expansion. 2024: Valuation concerns after strong run. India's largest hospital chain — healthcare spend growing at 12% CAGR.</div>
+        <div class="badges"><span class="promise-badge">India Healthcare Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">6</div><div><div class="stock-name">Lupin</div><div class="stock-ticker">NSE: LUPIN</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹2,085 <small>/share</small></div><div class="stock-high">52W High: ₹2,480</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹94,000 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>27.5x</value></div>
+        <div class="stock-stat"><label>US Revenue</label><value>32% of sales</value></div>
+        <div class="stock-stat"><label>India Rank</label><value>Top 5</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2016–19: Goa plant FDA warning letter, US generic price erosion of 15–25% annually hammered margins. Stock fell from ₹2,000 to ₹700. Now on a genuine recovery — US business stabilizing, inhalation drugs portfolio building. ~16% below peak.</div>
+        <div class="badges"><span class="value-badge">Recovery Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">7</div><div><div class="stock-name">Torrent Pharmaceuticals</div><div class="stock-ticker">NSE: TORNTPHARM</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹3,195 <small>/share</small></div><div class="stock-high">52W High: ₹3,520</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹54,000 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>45x</value></div>
+        <div class="stock-stat"><label>India Rank</label><value>Top 10</value></div>
+        <div class="stock-stat"><label>Germany/Brazil</label><value>Strong presence</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Acquired Elder Pharma brands — debt jumped, impacting sentiment. 2022–23: General pharma selloff. Strong India + Germany + Brazil diversification makes it resilient. One of cleanest balance sheets in midcap pharma.</div>
+        <div class="badges"><span class="promise-badge">Quality Midcap</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">8</div><div><div class="stock-name">Aurobindo Pharma</div><div class="stock-ticker">NSE: AUROPHARMA</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,180 <small>/share</small></div><div class="stock-high">52W High: ₹1,590</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹69,000 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>14.5x (cheap)</value></div>
+        <div class="stock-stat"><label>US Revenue</label><value>45% of sales</value></div>
+        <div class="stock-stat"><label>ANDA Filings</label><value>300+ in US</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:74%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Multiple US FDA observations at various plants (2017–2021). US generic price erosion. 2024: US tariff fears on injectables. Trades at compelling 14.5x P/E vs sector average 28x. Promoter buying seen at lows — a strong bullish signal.</div>
+        <div class="badges"><span class="value-badge">Deep Value</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">9</div><div><div class="stock-name">Gland Pharma</div><div class="stock-ticker">NSE: GLAND</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,510 <small>/share</small></div><div class="stock-high">52W High: ₹2,210</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹24,800 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>22x</value></div>
+        <div class="stock-stat"><label>Business</label><value>Injectables CDMO</value></div>
+        <div class="stock-stat"><label>US+Europe</label><value>80% revenue</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2021 IPO at ₹1,500, rose to ₹4,300 then crashed. Revenue slowdown as US injectable market normalized post-COVID. Chinese parent (Fosun) ownership creates geopolitical discount. Down ~30% from IPO listing peak — injectables CDMO is a powerful moat.</div>
+        <div class="badges"><span class="value-badge">Contrarian</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">10</div><div><div class="stock-name">Mankind Pharma</div><div class="stock-ticker">NSE: MANKIND</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹2,010 <small>/share</small></div><div class="stock-high">52W High: ₹2,975</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹80,500 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>42x</value></div>
+        <div class="stock-stat"><label>OTC Brands</label><value>Manforce, Gas-O-Fast</value></div>
+        <div class="stock-stat"><label>India Rank</label><value>4th largest</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:76%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>IPO in 2023 at ₹1,080 — rose to ₹2,975 then corrected 33% on general market weakness and high post-listing valuations. Acquired BSV (₹13,600 Cr biosimilars company) — integration risk. But brand strength in consumer healthcare (Prega News, AcneStar) is unmatched.</div>
+        <div class="badges"><span class="promise-badge">Brand Compounder</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== IT ===== -->
+<div id="sector-it" class="sector-section">
+  <div class="sector-header">
+    <div class="sector-icon" style="background:#ede9fe;">💻</div>
+    <div>
+      <div class="sector-title">Information Technology</div>
+      <div class="sector-subtitle">India's global export engine — US/Europe spending drives 70–80% of revenues</div>
+    </div>
+  </div>
+  <div class="crash-reason-box">
+    <h3>Why IT falls in crisis</h3>
+    <p>Indian IT is almost entirely dependent on US and European enterprise spending. When Western economies slow or fear recession, Indian IT companies see deal slowdowns, project cancellations, and visa cost increases. The 2000–01 dot-com bust was devastating for IT. In 2008, BFSI clients (banks) — the biggest IT spenders — froze budgets. In 2022–23, US Fed rate hikes triggered massive layoffs in US tech, killing discretionary IT spending. In 2024–25, AI automation concerns raised fears of commoditization of Indian IT services. Every single time, Indian IT has recovered and grown stronger.</p>
+  </div>
+  <div class="stocks-grid">
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">1</div><div><div class="stock-name">Tata Consultancy Services</div><div class="stock-ticker">NSE: TCS</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹3,490 <small>/share</small></div><div class="stock-high">52W High: ₹4,592</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹12.6 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>24.8x</value></div>
+        <div class="stock-stat"><label>Revenue (FY25)</label><value>₹2.55 L Cr</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>2.1%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:93%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2000–01: All IT collapsed in dot-com bust. 2008: BFSI client budget cuts. 2022–23: US tech recession killed discretionary spending — TCS fell 30%+ from peak. 2024: AI fears. Now at 24% discount from 52W high. Generative AI is driving a new upcycle — TCS signed $8.7B in new deals in FY25.</div>
+        <div class="badges"><span class="promise-badge">Bluechip Buy</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">2</div><div><div class="stock-name">Infosys</div><div class="stock-ticker">NSE: INFY</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,488 <small>/share</small></div><div class="stock-high">52W High: ₹2,006</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹6.18 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>22.4x</value></div>
+        <div class="stock-stat"><label>Revenue (FY25)</label><value>₹1.61 L Cr</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>2.8%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2017: Whistleblower allegations against CEO Vishal Sikka, then resignation — massive governance scare. 2022–23: US tech slowdown. 2024: Revenue guidance cuts. At 26% discount from 52W high — historically this is the entry zone for 40–50% returns in the following 18 months.</div>
+        <div class="badges"><span class="value-badge">Deep Value IT</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">3</div><div><div class="stock-name">HCL Technologies</div><div class="stock-ticker">NSE: HCLTECH</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,548 <small>/share</small></div><div class="stock-high">52W High: ₹1,966</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹4.20 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>22.5x</value></div>
+        <div class="stock-stat"><label>Engineering Svcs</label><value>Fast growing</value></div>
+        <div class="stock-stat"><label>Products Revenue</label><value>~22% of mix</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:87%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: COVID freeze on client spending. 2022–23: US slowdown hit engineering services hard. 2024: Mixed guidance on software products segment (IBM products acquired). Now best-placed for engineering services + AI transformation. ~21% below 52W high.</div>
+        <div class="badges"><span class="value-badge">Value Pick</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">4</div><div><div class="stock-name">Wipro</div><div class="stock-ticker">NSE: WIPRO</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹272 <small>/share</small></div><div class="stock-high">52W High: ₹324</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.83 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>20.8x</value></div>
+        <div class="stock-stat"><label>Buyback History</label><value>Regular</value></div>
+        <div class="stock-stat"><label>Acquisitions</label><value>Capco, Rizing</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2000: Largest Indian market cap company — fell 90% in dot-com bust. 2008: Global slowdown. 2020–21: Multiple CEO changes, strategic drift. 2022–23: US tech recession. New CEO Srinivas Pallia executing well. Cheapest of Tier-1 IT at 20x P/E.</div>
+        <div class="badges"><span class="value-badge">Laggard Catching Up</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">5</div><div><div class="stock-name">Tech Mahindra</div><div class="stock-ticker">NSE: TECHM</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,598 <small>/share</small></div><div class="stock-high">52W High: ₹1,878</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.56 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>29.5x</value></div>
+        <div class="stock-stat"><label>Telecom</label><value>Core focus</value></div>
+        <div class="stock-stat"><label>5G Pipeline</label><value>Major opportunity</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022–24: Telecom clients (AT&T, Verizon, BT) massively cut IT budgets. Profit fell 60% in some quarters. New CEO CP Gurnani's restructuring plan under Mohit Joshi now showing results. 5G infrastructure rollout globally = massive opportunity ahead.</div>
+        <div class="badges"><span class="promise-badge">Turnaround Story</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">6</div><div><div class="stock-name">Persistent Systems</div><div class="stock-ticker">NSE: PERSISTENT</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹4,980 <small>/share</small></div><div class="stock-high">52W High: ₹6,788</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹76,500 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>54x</value></div>
+        <div class="stock-stat"><label>Revenue Growth</label><value>22% CAGR</value></div>
+        <div class="stock-stat"><label>Focus</label><value>ISV/Productco</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>High-growth small-mid cap IT always falls harder in selloffs — growth premium collapses. 2024: General IT sector weakness. Down ~27% from 52W high. Fastest-growing Tier-2 IT — sustained 20%+ growth for 10+ quarters. AI engineering services sweet spot.</div>
+        <div class="badges"><span class="promise-badge">Growth Compounder</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">7</div><div><div class="stock-name">Mphasis</div><div class="stock-ticker">NSE: MPHASIS</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹2,490 <small>/share</small></div><div class="stock-high">52W High: ₹3,197</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹46,600 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>32x</value></div>
+        <div class="stock-stat"><label>DXC Exposure</label><value>Reduced</value></div>
+        <div class="stock-stat"><label>BFSI Focus</label><value>Core strength</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:77%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022–24: Hyperscaler clients (Blackrock, Allianz, WellsFargo) cut IT budgets. DXC (parent channel) revenues declined. 2024: US BFSI sector stress reduced tech spending. Now diversifying client base. Blackstone ownership = strong corporate governance.</div>
+        <div class="badges"><span class="value-badge">Quality Midcap</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">8</div><div><div class="stock-name">L&amp;T Technology Services</div><div class="stock-ticker">NSE: LTTS</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹4,410 <small>/share</small></div><div class="stock-high">52W High: ₹5,695</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹46,400 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>37x</value></div>
+        <div class="stock-stat"><label>EV/Mobility</label><value>Strong pipeline</value></div>
+        <div class="stock-stat"><label>Engineering Svcs</label><value>Pure play</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:79%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022–24: Auto clients (EVs) cut engineering services. Semi/Hi-Tech clients froze R&D spending on US recession fears. Down 22% from 52W high. ER&D (engineering R&D services) is the fastest growing sub-segment in IT globally — LTTS is the purest play.</div>
+        <div class="badges"><span class="promise-badge">Structural Growth</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">9</div><div><div class="stock-name">Coforge</div><div class="stock-ticker">NSE: COFORGE</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹7,190 <small>/share</small></div><div class="stock-high">52W High: ₹9,475</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹49,100 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>57x</value></div>
+        <div class="stock-stat"><label>Revenue Growth</label><value>25%+ YoY</value></div>
+        <div class="stock-stat"><label>Focus</label><value>BFSI, Travel, Insurance</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Being a high-growth mid-cap (P/E 60x+), any market weakness causes outsized correction. Acquired Xceltrait — integration questions arose. Down ~24% from 52W high. One of most consistent revenue growth stories in Indian IT. Insider buying at current levels.</div>
+        <div class="badges"><span class="promise-badge">Growth Pick</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">10</div><div><div class="stock-name">Oracle Financial Services</div><div class="stock-ticker">NSE: OFSS</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹11,890 <small>/share</small></div><div class="stock-high">52W High: ₹13,510</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.03 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>37x</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>4.5%</value></div>
+        <div class="stock-stat"><label>Cash Rich</label><value>Zero debt</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Niche banking software — low analyst coverage. 2020–21: Banks froze core banking upgrade projects. 2024: IT sector selloff. High dividend yield of 4.5% + monopoly in core banking software globally (FLEXCUBE powers 1000+ banks worldwide). Correction = buy opportunity.</div>
+        <div class="badges"><span class="promise-badge">High Yield + Growth</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== FMCG ===== -->
+<div id="sector-fmcg" class="sector-section">
+  <div class="sector-header">
+    <div class="sector-icon" style="background:#fef9c3;">🛒</div>
+    <div>
+      <div class="sector-title">FMCG — Fast Moving Consumer Goods</div>
+      <div class="sector-subtitle">The ultimate defensive sector — India's 1.4 billion consumers don't stop eating or bathing in a crisis</div>
+    </div>
+  </div>
+  <div class="crash-reason-box">
+    <h3>Why FMCG falls in crisis</h3>
+    <p>FMCG stocks rarely crash due to business problems — they fall due to valuation correction and portfolio rebalancing. When markets sell off, investors sell everything including defensives to raise cash. In 2008, HUL fell 30% despite growing profits. In 2020, supply chain fears hit. In 2022–23, rural demand slowdown due to inflation caused earnings cuts. In 2024, volume growth remained sluggish as consumers traded down. FMCG stocks are never "cheap" on P/E — their premium is justified by brand moats, consistent dividends, and predictable cash flows. But corrections create entry windows.</p>
+  </div>
+  <div class="stocks-grid">
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">1</div><div><div class="stock-name">Hindustan Unilever</div><div class="stock-ticker">NSE: HINDUNILVR</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹2,345 <small>/share</small></div><div class="stock-high">52W High: ₹2,972</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹5.50 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>50x</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>1.8%</value></div>
+        <div class="stock-stat"><label>Brands</label><value>Dove, Surf, Lux, Knorr</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022–23: Input cost (palm oil, crude) inflation crushed margins. Volume growth slowed as consumers downgraded to cheaper brands. Down ~21% from 52W high. The #1 FMCG company in India, present in 9 of 10 Indian homes — price correction is rare and historically always recovered.</div>
+        <div class="badges"><span class="promise-badge">Core Portfolio Hold</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">2</div><div><div class="stock-name">ITC Ltd</div><div class="stock-ticker">NSE: ITC</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹426 <small>/share</small></div><div class="stock-high">52W High: ₹528</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹5.32 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>27x</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>3.2%</value></div>
+        <div class="stock-stat"><label>Segments</label><value>FMCG, Hotels, Paper</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Tobacco stigma = permanent ESG discount by global funds (FIIs underweight ITC). 2022: ITC Hotels demerger uncertainty. 2024: FII general exit from India. Trading 19% below 52W high. Tobacco cash cow + growing FMCG brands (Aashirvaad, Classmate, Bingo) + India's best hotel assets = deep value.</div>
+        <div class="badges"><span class="value-badge">Dividend Value</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">3</div><div><div class="stock-name">Nestlé India</div><div class="stock-ticker">NSE: NESTLEIND</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹2,215 <small>/share</small></div><div class="stock-high">52W High: ₹2,778</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.13 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>65x</value></div>
+        <div class="stock-stat"><label>Maggi Market Share</label><value>63%</value></div>
+        <div class="stock-stat"><label>ROE</label><value>110%+</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2015: The Maggi ban — FSSAI found lead in samples. Stock crashed 30% in days. Nestlé was cleared within months and regained 60% market share within a year. 2024: Volume slowdown in premium foods. Incredible brand loyalty — Maggi ban recovery was one of the most impressive in FMCG history.</div>
+        <div class="badges"><span class="promise-badge">Brand Moat</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">4</div><div><div class="stock-name">Dabur India</div><div class="stock-ticker">NSE: DABUR</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹490 <small>/share</small></div><div class="stock-high">52W High: ₹656</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹86,700 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>45x</value></div>
+        <div class="stock-stat"><label>Ayurveda Focus</label><value>Post-COVID boost</value></div>
+        <div class="stock-stat"><label>International</label><value>30% of revenue</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022–24: Rural India slowdown hit Dabur harder than HUL (more rural exposure). Bangladesh unrest disrupted international operations. India-Middle East geopolitics slowed export markets. Down 25% from 52W high. Chyawanprash, Hajmola, Real Juice — all still market leaders.</div>
+        <div class="badges"><span class="value-badge">Correction Buy</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">5</div><div><div class="stock-name">Marico</div><div class="stock-ticker">NSE: MARICO</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹620 <small>/share</small></div><div class="stock-high">52W High: ₹720</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹80,000 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>48x</value></div>
+        <div class="stock-stat"><label>Parachute Share</label><value>60%+ coconut oil</value></div>
+        <div class="stock-stat"><label>Saffola</label><value>Market leader</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022: Copra (coconut) oil prices spiked — Parachute margins compressed. Bangladesh (30% of international revenue) political instability in 2024 caused export concerns. Down 14% from 52W high. Pricing power of Parachute = moat. Bangladesh normalization = recovery.</div>
+        <div class="badges"><span class="promise-badge">Pricing Power</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">6</div><div><div class="stock-name">Godrej Consumer Products</div><div class="stock-ticker">NSE: GODREJCP</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,125 <small>/share</small></div><div class="stock-high">52W High: ₹1,527</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.15 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>58x</value></div>
+        <div class="stock-stat"><label>Africa/Indonesia</label><value>Key markets</value></div>
+        <div class="stock-stat"><label>HIT/Good Knight</label><value>Market leaders</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022–24: Africa and Indonesia businesses underperformed. Currency depreciation in African markets eroded profits. Management change guidance reset. Down 26% from 52W high — biggest correction in 5 years. Insecticide + hair colour business in EM = multi-decade runway.</div>
+        <div class="badges"><span class="value-badge">EM Consumer Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">7</div><div><div class="stock-name">Britannia Industries</div><div class="stock-ticker">NSE: BRITANNIA</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹4,910 <small>/share</small></div><div class="stock-high">52W High: ₹6,055</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.18 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>50x</value></div>
+        <div class="stock-stat"><label>Biscuit Share</label><value>35%+ India</value></div>
+        <div class="stock-stat"><label>Distribution</label><value>5M+ outlets</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Wheat and palm oil inflation squeezed margins in 2022–23. Quick commerce (Zepto, Blinkit) disrupting traditional distribution gave bears a story. Down 19% from 52W high. Biscuits are India's most consumed packaged food — this is a fundamental compounder.</div>
+        <div class="badges"><span class="promise-badge">Essential Compounder</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">8</div><div><div class="stock-name">Colgate-Palmolive India</div><div class="stock-ticker">NSE: COLPAL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹2,885 <small>/share</small></div><div class="stock-high">52W High: ₹3,890</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹78,400 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>44x</value></div>
+        <div class="stock-stat"><label>Toothpaste Share</label><value>52% of market</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>2.1%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Patanjali and Himalaya Dant Kanti attacked the ayurvedic segment aggressively from 2016–20, taking ~5% share. FII selloff 2024. Down 26% from 52W high — most in 5 years. But 52% toothpaste market share simply does not go away. Colgate remained profitable even during the 2008 crisis.</div>
+        <div class="badges"><span class="promise-badge">Monopoly Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">9</div><div><div class="stock-name">Tata Consumer Products</div><div class="stock-ticker">NSE: TATACONSUM</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹975 <small>/share</small></div><div class="stock-high">52W High: ₹1,274</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹90,200 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>66x</value></div>
+        <div class="stock-stat"><label>Tea Market</label><value>Tata Tea = #1</value></div>
+        <div class="stock-stat"><label>International</label><value>Tetley (UK/US)</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:83%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020–21: Created by merger of Tata Global Beverages + Tata Chemicals FMCG — transition confusion. High valuation in 2022–23. Tea price inflation compressed margins. Down 23% from 52W high. Tata brand + Starbucks India JV + salt business = diversified moat.</div>
+        <div class="badges"><span class="value-badge">Tata Brand Premium</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">10</div><div><div class="stock-name">Varun Beverages</div><div class="stock-ticker">NSE: VBL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹476 <small>/share</small></div><div class="stock-high">52W High: ₹661</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.74 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>54x</value></div>
+        <div class="stock-stat"><label>PepsiCo Partner</label><value>Sub-Sahara Africa</value></div>
+        <div class="stock-stat"><label>Volume Growth</label><value>22% CAGR 5yr</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:87%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2024: Post-summer season correction. PepsiCo India territory expansion integration costs. Africa acquisition digestion. Down 28% from 52W high. PepsiCo's master bottling partner in India — as India urbanizes and temperatures rise, this is a 20-year secular growth story.</div>
+        <div class="badges"><span class="promise-badge">Long-Term Compounder</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== ENERGY ===== -->
+<div id="sector-energy" class="sector-section">
+  <div class="sector-header">
+    <div class="sector-icon" style="background:#fef3c7;">⚡</div>
+    <div>
+      <div class="sector-title">Energy — Oil, Gas &amp; Power</div>
+      <div class="sector-subtitle">India's energy backbone — massive undervaluation in PSU energy giants post 2024 selloff</div>
+    </div>
+  </div>
+  <div class="crash-reason-box">
+    <h3>Why energy falls in crisis</h3>
+    <p>Oil price crashes devastate upstream companies (ONGC, Oil India) while benefiting downstream (BPCL, HPCL). In 2008, crude oil went from $147 to $35 — India's oil sector saw massive moves both ways. In 2020, crude briefly went negative (-$37/barrel) — historic panic in energy stocks. PSU energy companies also suffer from government interference (underpriced fuel = forced losses). In 2022–24, government caps on domestic gas prices hurt ONGC. Renewable energy stocks corrected 40–60% from peaks in 2024 as global interest rates made their high-debt models unattractive.</p>
+  </div>
+  <div class="stocks-grid">
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">1</div><div><div class="stock-name">Reliance Industries</div><div class="stock-ticker">NSE: RELIANCE</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,275 <small>/share</small></div><div class="stock-high">52W High: ₹1,608</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹17.2 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>21x</value></div>
+        <div class="stock-stat"><label>Jio Subscribers</label><value>490M+</value></div>
+        <div class="stock-stat"><label>Green Energy CapEx</label><value>₹75,000 Cr</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Promoter pledging fears + refining margin collapse. 2020: Oil crashed + Jio tower explosion accident. 2022–24: Retail and O2C (oil-to-chemicals) segments disappointed. Down 21% from 52W high — Jio Platforms (telecom) + Reliance Retail alone are worth more than current market cap by many analyst estimates.</div>
+        <div class="badges"><span class="promise-badge">Conglomerate Core</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">2</div><div><div class="stock-name">ONGC</div><div class="stock-ticker">NSE: ONGC</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹239 <small>/share</small></div><div class="stock-high">52W High: ₹345</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹3.01 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>7.2x (very cheap)</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>4.8%</value></div>
+        <div class="stock-stat"><label>Gas Production</label><value>Rising</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Crude crash from $147 to $35 destroyed profits. Government "under-recovery" burden (subsidizing diesel). 2020: Historic crude crash. 2022–23: Windfall tax imposed. 2024–25: Global oil price softness + FII exit. Down 31% from 52W high. At 7.2x P/E with 4.8% dividend — one of India's most undervalued PSU stocks.</div>
+        <div class="badges"><span class="value-badge">Extreme Value</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">3</div><div><div class="stock-name">Power Grid Corp of India</div><div class="stock-ticker">NSE: POWERGRID</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹298 <small>/share</small></div><div class="stock-high">52W High: ₹367</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.77 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>13.5x</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>4.2%</value></div>
+        <div class="stock-stat"><label>Regulated Revenue</label><value>95%+</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:83%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Regulated utility = boring = sold last in bull, sold first in bear market rotation. 2024: FII exit from PSU space. Down 19% from 52W high. 95%+ regulated revenues make earnings nearly risk-free. India's power demand growing at 6–8% annually = permanent growth for transmission.</div>
+        <div class="badges"><span class="promise-badge">Defensive Income</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">4</div><div><div class="stock-name">Coal India</div><div class="stock-ticker">NSE: COALINDIA</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹385 <small>/share</small></div><div class="stock-high">52W High: ₹543</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.37 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>8.2x</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>6.5%</value></div>
+        <div class="stock-stat"><label>Market Share</label><value>80% of India coal</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Global ESG pressure — funds mandated to reduce fossil fuel exposure regardless of valuation. 2024: FII exit accelerated by climate policy fears. Down 29% from 52W high. 6.5% dividend yield + ESG noise fading + India's coal demand not going anywhere for 15+ years. Classic value trap fear vs genuine value.</div>
+        <div class="badges"><span class="value-badge">Highest Dividend</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">5</div><div><div class="stock-name">NTPC</div><div class="stock-ticker">NSE: NTPC</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹335 <small>/share</small></div><div class="stock-high">52W High: ₹448</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹3.25 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>14.8x</value></div>
+        <div class="stock-stat"><label>Renewable Target</label><value>60 GW by 2032</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>2.6%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: PSU selloff. 2020: Coal supply issues impacted plant load factors. 2024: FII exodus from PSU space. Down 25% from 52W high. India's largest power generator — regulated returns make it near risk-free. Green energy expansion + data center power demand = re-rating ahead.</div>
+        <div class="badges"><span class="promise-badge">Green Transition Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">6</div><div><div class="stock-name">Adani Green Energy</div><div class="stock-ticker">NSE: ADANIGREEN</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹980 <small>/share</small></div><div class="stock-high">52W High: ₹2,175</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.55 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>170x (growth stock)</value></div>
+        <div class="stock-stat"><label>Solar Capacity</label><value>11.6 GW operational</value></div>
+        <div class="stock-stat"><label>Target by 2030</label><value>45 GW</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Jan 2023: Hindenburg short-seller report accused Adani Group of fraud — AGEL crashed 65% in days. 2024: US DoJ bribery charges against Gautam Adani (later dismissed). Stock is still 55% below 52W high. Renewable capacity is real, growing, and backed by global sovereign funds (GQG Partners bought ₹15,000 Cr).</div>
+        <div class="badges"><span class="value-badge">High Risk / High Reward</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">7</div><div><div class="stock-name">BPCL</div><div class="stock-ticker">NSE: BPCL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹295 <small>/share</small></div><div class="stock-high">52W High: ₹376</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.28 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>9.4x</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>5.1%</value></div>
+        <div class="stock-stat"><label>Refinery Capacity</label><value>35 MMTPA</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:77%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Crude crash + government blocked fuel price hikes = massive marketing losses. 2022: Russia-Ukraine war spiked crude. Privatization plan announced in 2020, then shelved — investor frustration. 9.4x P/E + 5.1% dividend yield + India's petrol pump growth story.</div>
+        <div class="badges"><span class="value-badge">Dividend Value</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">8</div><div><div class="stock-name">Tata Power</div><div class="stock-ticker">NSE: TATAPOWER</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹372 <small>/share</small></div><div class="stock-high">52W High: ₹494</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.19 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>32x</value></div>
+        <div class="stock-stat"><label>Renewable</label><value>45% of portfolio</value></div>
+        <div class="stock-stat"><label>EV Charging</label><value>5,000+ points</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2012–20: Mundra power plant losses (imported Indonesian coal prices spiked vs fixed-price PPA). Debt ballooned. Near-bankruptcy fear. 2022–24: Global interest rates made high-debt renewable projects risky. Down 25% from 52W high. Cleaned up balance sheet + India EV + solar = new growth engine.</div>
+        <div class="badges"><span class="promise-badge">Turnaround Story</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">9</div><div><div class="stock-name">Oil India</div><div class="stock-ticker">NSE: OIL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹418 <small>/share</small></div><div class="stock-high">52W High: ₹767</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹44,300 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>6.2x (extreme value)</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>5.8%</value></div>
+        <div class="stock-stat"><label>Gas Production</label><value>Northeast India</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:73%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2024–25: Crude oil global softness + windfall tax concern + FII PSU exit. Down 45% from 52W high — one of the sharpest crashes in the energy PSU space. At 6.2x P/E and 5.8% dividend yield, the earnings are real and growing. Extremely deep value.</div>
+        <div class="badges"><span class="value-badge">Extreme Contrarian</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">10</div><div><div class="stock-name">Gujarat Gas</div><div class="stock-ticker">NSE: GUJARATGAS</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹445 <small>/share</small></div><div class="stock-high">52W High: ₹598</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹30,600 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>22x</value></div>
+        <div class="stock-stat"><label>CGD Network</label><value>30+ districts</value></div>
+        <div class="stock-stat"><label>Industrial Gas</label><value>65% of volumes</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:79%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022–23: Global LNG prices spiked 5x after Russia-Ukraine war — piped gas unaffordable for industrial clients, volumes crashed. 2024: General sector correction. Now LNG prices normalized — volumes recovering. India's city gas distribution = infrastructure monopoly with 25-year license in each district.</div>
+        <div class="badges"><span class="promise-badge">Infrastructure Monopoly</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== METALS ===== -->
+<div id="sector-metals" class="sector-section">
+  <div class="sector-header">
+    <div class="sector-icon" style="background:#f1f5f9;">⚙️</div>
+    <div>
+      <div class="sector-title">Metals &amp; Mining</div>
+      <div class="sector-subtitle">Highly cyclical — crashes deep, recovers powerfully with global capex supercycle</div>
+    </div>
+  </div>
+  <div class="crash-reason-box">
+    <h3>Why metals fall in crisis</h3>
+    <p>Metals are the most cyclical sector — prices depend entirely on global demand (China drives 50% of world metals demand). In 2008, steel prices crashed 70%, aluminium 50%. In 2015–16, China's slowdown fear crushed metals globally. In 2020, construction halted globally. In 2022–23, China's real estate crisis caused iron ore and steel prices to collapse. Indian metal companies also suffer from high debt (steel plants are capital-intensive) making them vulnerable to rate hikes. But every single metals cycle ends with a powerful recovery — India's infrastructure supercycle makes this sector crucial.</p>
+  </div>
+  <div class="stocks-grid">
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">1</div><div><div class="stock-name">Tata Steel</div><div class="stock-ticker">NSE: TATASTEEL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹145 <small>/share</small></div><div class="stock-high">52W High: ₹184</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.80 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>37x (cyclical)</value></div>
+        <div class="stock-stat"><label>India EBITDA</label><value>₹8,000+ Cr/qtr</value></div>
+        <div class="stock-stat"><label>UK Restructuring</label><value>Ongoing</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Corus acquisition (UK steel) debt became unmanageable when global steel collapsed. 2015–16: China steel dumping crushed prices. 2020: COVID construction halt. 2022–24: UK operations (Port Talbot) losses worsened — government subsidy deal to close blast furnaces. India operations profitable but UK drags. Down 21% from high.</div>
+        <div class="badges"><span class="promise-badge">India Infra Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">2</div><div><div class="stock-name">JSW Steel</div><div class="stock-ticker">NSE: JSWSTEEL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹895 <small>/share</small></div><div class="stock-high">52W High: ₹1,070</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.15 L Cr</value></div>
+        <div class="stock-stat"><label>Capacity</label><value>37 MTPA (India #1)</value></div>
+        <div class="stock-stat"><label>Expansion CapEx</label><value>₹45,000 Cr</value></div>
+        <div class="stock-stat"><label>EV Steel</label><value>Entering segment</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2015–16: Chinese steel dumping priced Indian steel out. 2020: COVID. 2022–23: Global steel slowdown + high coking coal prices from Australia compressed margins. 2024: China demand fears. Down 16% from high. India's largest private steel maker — infrastructure spending = 10 year tailwind.</div>
+        <div class="badges"><span class="promise-badge">India #1 Steel</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">3</div><div><div class="stock-name">Vedanta</div><div class="stock-ticker">NSE: VEDL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹435 <small>/share</small></div><div class="stock-high">52W High: ₹527</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.61 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>11.5x</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>7.2%</value></div>
+        <div class="stock-stat"><label>Zinc, Aluminium</label><value>+ Oil (ONGC JV)</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2015–16: Zinc and aluminium price crash. 2020: COVID + copper/zinc demand fall. 2022–24: Vedanta parent (Volcan) had UK debt crisis threatening to dump Indian subsidiary shares. Demerger plan uncertainty. Down 17% from high. 7.2% dividend yield is real cash — Hindustan Zinc alone worth more than market cap.</div>
+        <div class="badges"><span class="value-badge">Dividend + Value</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">4</div><div><div class="stock-name">Hindalco Industries</div><div class="stock-ticker">NSE: HINDALCO</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹618 <small>/share</small></div><div class="stock-high">52W High: ₹772</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.38 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>14.2x</value></div>
+        <div class="stock-stat"><label>Novelis (USA)</label><value>Auto sheet leader</value></div>
+        <div class="stock-stat"><label>Aluminium Recycling</label><value>50%+ of Novelis</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Novelis acquisition debt. Aluminium price crash. 2020: Auto industry collapse hit Novelis (sells aluminium sheets to Ford, GM, BMW). 2022–23: Energy inflation in Europe made aluminium smelting unprofitable. Down 20% from high. EV vehicles use 3x more aluminium than ICE — Novelis is a structural winner.</div>
+        <div class="badges"><span class="promise-badge">EV Structural Winner</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">5</div><div><div class="stock-name">SAIL</div><div class="stock-ticker">NSE: SAIL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹115 <small>/share</small></div><div class="stock-high">52W High: ₹175</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹47,500 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>14x</value></div>
+        <div class="stock-stat"><label>Govt. Order Book</label><value>Railway/Defence</value></div>
+        <div class="stock-stat"><label>Capacity</label><value>21.4 MTPA</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Chronic inefficiency vs private peers. 2015–18: Massive NPA overhang from lenders (banking crisis impacted capacity financing). 2022–24: Global steel slump. Down 34% from 52W high. PSU discount is real but government railway/defence steel orders are a guaranteed offtake. Deep contrarian value.</div>
+        <div class="badges"><span class="value-badge">Deep Contrarian</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">6</div><div><div class="stock-name">National Aluminium (NALCO)</div><div class="stock-ticker">NSE: NATIONALUM</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹198 <small>/share</small></div><div class="stock-high">52W High: ₹248</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹36,400 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>16.2x</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>3.1%</value></div>
+        <div class="stock-stat"><label>Bauxite + Alumina</label><value>Self-sufficient</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:76%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Aluminium price cycle + PSU discount. 2024: FII exit from PSU space. Down 20% from high. Unique vertically integrated model (bauxite → alumina → aluminium) gives it lowest cost structure in India. Captive power plant reduces energy cost. Strong free cash flow generator.</div>
+        <div class="badges"><span class="value-badge">Lowest Cost Producer</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">7</div><div><div class="stock-name">Hindustan Zinc</div><div class="stock-ticker">NSE: HINDZINC</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹444 <small>/share</small></div><div class="stock-high">52W High: ₹826</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.88 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>18x</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>9.8%</value></div>
+        <div class="stock-stat"><label>World Zinc Rank</label><value>Top 3 producer</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2024: Zinc prices globally corrected on China demand fears. Promoter (Vedanta) controversy about dividends. 9.8% dividend yield is extraordinary. Down 46% from 52W high — one of the steepest corrections in quality large-cap India. Top 3 zinc producer globally = irreplaceable asset.</div>
+        <div class="badges"><span class="value-badge">9.8% Dividend</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">8</div><div><div class="stock-name">APL Apollo Tubes</div><div class="stock-ticker">NSE: APLAPOLLO</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,420 <small>/share</small></div><div class="stock-high">52W High: ₹1,782</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹39,800 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>50x</value></div>
+        <div class="stock-stat"><label>Market Share</label><value>65% India steel tubes</value></div>
+        <div class="stock-stat"><label>Volume Growth</label><value>15%+ YoY</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Steel price volatility passes through to tube prices causing quarterly margin swings. 2022–24: Real estate slowdown reduced structural steel tube demand. Down 20% from 52W high. India's monopoly in branded structural tubes — real estate recovery = direct beneficiary.</div>
+        <div class="badges"><span class="promise-badge">Market Share Monopoly</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">9</div><div><div class="stock-name">Jindal Steel &amp; Power</div><div class="stock-ticker">NSE: JINDALSTEL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹870 <small>/share</small></div><div class="stock-high">52W High: ₹1,094</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹88,600 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>13.5x</value></div>
+        <div class="stock-stat"><label>Debt (Net)</label><value>Nearly zero</value></div>
+        <div class="stock-stat"><label>Capacity</label><value>9.6 MTPA growing</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:81%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Massive debt from power plant + steel expansion. Near-bankruptcy. 2015–18: Loan repayment stress. 2022–24: Steel cycle slowdown. Down 20% from high. Remarkable turnaround — nearly zero net debt now. Naveen Jindal's leadership = credibility restored. Value at 13.5x P/E.</div>
+        <div class="badges"><span class="promise-badge">Debt-Free Turnaround</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">10</div><div><div class="stock-name">Welspun Corp</div><div class="stock-ticker">NSE: WELCORP</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹665 <small>/share</small></div><div class="stock-high">52W High: ₹843</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹17,600 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>14x</value></div>
+        <div class="stock-stat"><label>US Pipeline</label><value>Major exporter</value></div>
+        <div class="stock-stat"><label>Order Book</label><value>₹9,000 Cr+</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:77%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Oil price crashes kill pipeline orders globally (oil companies freeze capex). 2020: Zero pipeline orders as oil price went negative. 2022–24: Global steel pipe demand slow. Down 21% from high. US shale + India gas pipeline expansion = structural order book building. 14x P/E is cheap for the order visibility.</div>
+        <div class="badges"><span class="value-badge">Order Book Value</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== AUTO ===== -->
+<div id="sector-auto" class="sector-section">
+  <div class="sector-header">
+    <div class="sector-icon" style="background:#ecfdf5;">🚗</div>
+    <div>
+      <div class="sector-title">Automobiles &amp; Auto Components</div>
+      <div class="sector-subtitle">Cyclical but powerful — India set to become world's #3 auto market by 2027</div>
+    </div>
+  </div>
+  <div class="crash-reason-box">
+    <h3>Why auto falls in crisis</h3>
+    <p>Automobile demand is highly interest rate sensitive — most vehicles are bought on EMI. When rates rise, demand falls immediately. In 2018–19, IL&FS crisis tightened credit → auto sales fell 18% in FY20. In 2020, COVID shutdown halted production and sales. In 2022–23, semiconductor shortages caused supply disruptions. In 2024–25, high vehicle prices + high interest rates stretched affordability. EV disruption risk also created sector uncertainty. But India's vehicle penetration (per 1000 people) is still very low vs global peers — long structural runway.</p>
+  </div>
+  <div class="stocks-grid">
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">1</div><div><div class="stock-name">Maruti Suzuki</div><div class="stock-ticker">NSE: MARUTI</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹12,230 <small>/share</small></div><div class="stock-high">52W High: ₹13,680</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹3.70 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>24x</value></div>
+        <div class="stock-stat"><label>Market Share</label><value>42% of India PV</value></div>
+        <div class="stock-stat"><label>Rural Penetration</label><value>50%+ of sales</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2018–19: Credit freeze hurt entry-level car buyers most (Maruti's core customers). 2020: COVID lockdown shut factories. 2023–24: Hyundai, Tata Motors, Mahindra taking UV share — Maruti's SUV transition slow. Now Jimny, Grand Vitara performing — SUV transition on track. Down 11% from high.</div>
+        <div class="badges"><span class="promise-badge">Market Leader</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">2</div><div><div class="stock-name">Mahindra &amp; Mahindra</div><div class="stock-ticker">NSE: M&amp;M</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹2,780 <small>/share</small></div><div class="stock-high">52W High: ₹3,222</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹3.45 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>26x</value></div>
+        <div class="stock-stat"><label>UV Market Share</label><value>22% and growing</value></div>
+        <div class="stock-stat"><label>EV Portfolio</label><value>BE.05, BE.07</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2019: Subsidiary write-offs (Ssangyong Korea, US automotive) dented profits. 2020: COVID + farm income stress hurt tractor sales. 2024: High valuation concerns after massive re-rating. Down 14% from 52W high. Scorpio-N, XUV700 — waiting lists of 6–12 months = demand not demand problem.</div>
+        <div class="badges"><span class="promise-badge">SUV + EV Winner</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">3</div><div><div class="stock-name">Tata Motors</div><div class="stock-ticker">NSE: TATAMOTORS</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹685 <small>/share</small></div><div class="stock-high">52W High: ₹1,063</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.52 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>7.4x (cheap)</value></div>
+        <div class="stock-stat"><label>JLR Revenue</label><value>$28B FY25</value></div>
+        <div class="stock-stat"><label>EV India Share</label><value>80%+ of EV market</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: JLR (Jaguar Land Rover) acquisition — massive debt. 2020: JLR shut UK plants + India commercial vehicles crashed. 2022–23: Semiconductor shortages delayed JLR production by 100,000+ cars. 2024–25: JLR China sales weak + EV transition costs. Down 35% from 52W high. JLR record profits — market hasn't given credit yet.</div>
+        <div class="badges"><span class="value-badge">JLR Recovery Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">4</div><div><div class="stock-name">Hero MotoCorp</div><div class="stock-ticker">NSE: HEROMOTOCO</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹4,155 <small>/share</small></div><div class="stock-high">52W High: ₹5,886</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹83,000 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>17x</value></div>
+        <div class="stock-stat"><label>2W Market Share</label><value>37% India</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>2.8%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Rural slowdown hit entry bikes. 2018–19: Fuel price spike killed 2-wheeler demand. 2020: Supply chain disruption. 2023–24: EV threat from Ola Electric, Ather caused panic re-rating of the entire 2W industry. Down 29% from 52W high. Rural India's income growth = two-wheeler demand growth. 2W electrification slower than feared.</div>
+        <div class="badges"><span class="value-badge">Rural India Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">5</div><div><div class="stock-name">Bajaj Auto</div><div class="stock-ticker">NSE: BAJAJ-AUTO</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹8,840 <small>/share</small></div><div class="stock-high">52W High: ₹12,774</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.56 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>29x</value></div>
+        <div class="stock-stat"><label>Export Share</label><value>40%+ of revenue</value></div>
+        <div class="stock-stat"><label>CNG/EV</label><value>Chetak, Freedom</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Export markets (Africa, SE Asia) crashed with COVID. 2023–24: EV fear on 2W segment. Down 31% from 52W high — one of the biggest corrections among top autos. Africa export recovery underway. Freedom 125 CNG motorcycle selling 10,000+/month. KTM (Austria) partnership = premium segment.</div>
+        <div class="badges"><span class="promise-badge">Export Champion</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">6</div><div><div class="stock-name">Eicher Motors (Royal Enfield)</div><div class="stock-ticker">NSE: EICHERMOT</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹5,180 <small>/share</small></div><div class="stock-high">52W High: ₹5,349</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.42 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>30x</value></div>
+        <div class="stock-stat"><label>Premium 2W Share</label><value>90%+ in 150cc–500cc</value></div>
+        <div class="stock-stat"><label>Global Expansion</label><value>Thailand, Latin Am</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:87%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2018–19: After massive premium 2W rally, growth slowed on high base. 2020: COVID. 2022–23: Near 52W high — not significantly corrected. India's premium aspirational motorcycle brand with waiting lists. Aspirational middle class = 20 year tailwind. International expansion only beginning.</div>
+        <div class="badges"><span class="promise-badge">Lifestyle Brand Moat</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">7</div><div><div class="stock-name">Ashok Leyland</div><div class="stock-ticker">NSE: ASHOKLEY</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹213 <small>/share</small></div><div class="stock-high">52W High: ₹260</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹62,500 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>17x</value></div>
+        <div class="stock-stat"><label>CV Market Share</label><value>27% MHCV</value></div>
+        <div class="stock-stat"><label>EV Bus</label><value>CEPTRA circuit bus</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width">80%</div></div></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2018–20: Axle load norm change reduced truck replacement demand. IL&FS credit squeeze hit fleet operators. 2020: COVID froze freight. 2024: CV cycle slowdown post infrastructure capex peak. Down 18% from high. India infra + e-commerce logistics = permanent freight demand.</div>
+        <div class="badges"><span class="promise-badge">CV Cycle Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">8</div><div><div class="stock-name">Samvardhana Motherson</div><div class="stock-ticker">NSE: MOTHERSON</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹138 <small>/share</small></div><div class="stock-high">52W High: ₹218</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹97,200 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>34x</value></div>
+        <div class="stock-stat"><label>Global Revenue</label><value>$18B+</value></div>
+        <div class="stock-stat"><label>Clients</label><value>All major OEMs</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:83%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Global auto shutdown shut all European plants (biggest revenue source). 2022: Semiconductor shortage reduced OEM volumes. 2024: EV transition uncertainty (EV wiring harnesses different). Down 37% from 52W high. World's largest auto components company — global EV transition = opportunity not threat.</div>
+        <div class="badges"><span class="value-badge">Global Auto Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">9</div><div><div class="stock-name">TVS Motor Company</div><div class="stock-ticker">NSE: TVSMOTOR</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹2,285 <small>/share</small></div><div class="stock-high">52W High: ₹2,958</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.08 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>48x</value></div>
+        <div class="stock-stat"><label>iQube EV</label><value>20,000+/month</value></div>
+        <div class="stock-stat"><label>Norton Motorcycles</label><value>UK premium brand</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2019–20: 2W sector slowdown. 2024: High P/E + general market correction. Down 23% from 52W high. Best positioned 2W company for EV — iQube growing fast. Acquired Norton Motorcycles (UK heritage brand) = global premium aspirations. Premium + EV = multi-year growth runway.</div>
+        <div class="badges"><span class="promise-badge">EV + Premium</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">10</div><div><div class="stock-name">Bosch India</div><div class="stock-ticker">NSE: BOSCHLTD</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹32,100 <small>/share</small></div><div class="stock-high">52W High: ₹40,000</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹94,500 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>42x</value></div>
+        <div class="stock-stat"><label>German Technology</label><value>Fuel systems, sensors</value></div>
+        <div class="stock-stat"><label>Cash Reserves</label><value>₹5,000+ Cr</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Diesel emission scandals globally reduced diesel car demand (Bosch's core product was diesel fuel injection). 2020: Pandemic. 2022–24: EV transition fears (petrol engines have far fewer components). Down 20% from 52W high. Now pivoting to EV components — Bosch Germany's technology + India manufacturing = enduring moat.</div>
+        <div class="badges"><span class="promise-badge">Technology Moat</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== INFRA ===== -->
+<div id="sector-infra" class="sector-section">
+  <div class="sector-header">
+    <div class="sector-icon" style="background:#e0f2fe;">🏗️</div>
+    <div>
+      <div class="sector-title">Infrastructure &amp; Capital Goods</div>
+      <div class="sector-subtitle">India's government is spending ₹11 lakh crore/year on infrastructure — biggest in history</div>
+    </div>
+  </div>
+  <div class="crash-reason-box">
+    <h3>Why infrastructure falls in crisis</h3>
+    <p>Infrastructure stocks are capital intensive and long-cycle — when credit dries up (2008, 2018) or government spending freezes (2020), order books stall. In 2010–2014, the infamous "policy paralysis" under UPA government caused project cancellations — infra stocks fell 60–80%. In 2018, IL&FS collapse froze infrastructure financing. In 2020, construction stopped for 3 months. In 2024–25, government capex was front-loaded in H1 and slowed in H2 — disappointing expectations. But India's ₹11 lakh crore infra budget is structural and multi-year.</p>
+  </div>
+  <div class="stocks-grid">
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">1</div><div><div class="stock-name">Larsen &amp; Toubro</div><div class="stock-ticker">NSE: LT</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹3,395 <small>/share</small></div><div class="stock-high">52W High: ₹3,963</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹4.69 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>31x</value></div>
+        <div class="stock-stat"><label>Order Book</label><value>₹5.6 L Cr</value></div>
+        <div class="stock-stat"><label>Middle East</label><value>40% of orders</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:93%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Credit crisis froze all large project financing. 2012–14: Policy paralysis under UPA. 2020: Construction halt. 2024: Geopolitical risk in Middle East (key order market) + domestic margin pressure from input costs. Down 14% from 52W high. ₹5.6 L Cr order book = 3.5 years of visibility. India's greatest engineering company.</div>
+        <div class="badges"><span class="promise-badge">India's Best EPC</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">2</div><div><div class="stock-name">ABB India</div><div class="stock-ticker">NSE: ABB</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹5,480 <small>/share</small></div><div class="stock-high">52W High: ₹9,452</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.16 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>61x</value></div>
+        <div class="stock-stat"><label>Products</label><value>Motors, Drives, Robots</value></div>
+        <div class="stock-stat"><label>Swiss Parent</label><value>Promoter</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>After a massive re-rating (stock went from ₹2,000 to ₹9,452 in 2023–24), inevitable correction. Valuation derating globally in capex/industrial stocks. Down 42% from 52W high — one of the steepest corrections. India's industrial automation leader. Every factory, data center, EV charging station needs ABB products.</div>
+        <div class="badges"><span class="value-badge">Automation Leader</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">3</div><div><div class="stock-name">Siemens India</div><div class="stock-ticker">NSE: SIEMENS</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹6,425 <small>/share</small></div><div class="stock-high">52W High: ₹8,004</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.29 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>70x</value></div>
+        <div class="stock-stat"><label>Energy Focus</label><value>Grid, Rail, Industry</value></div>
+        <div class="stock-stat"><label>German Parent</label><value>Technology transfer</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Industrial freeze. 2012–14: Power sector NPA crisis killed new power project orders. 2024: Post-run correction from ₹8,000 to ₹6,400. Down 20% from high. Siemens is the backbone of India's smart grid, metro rail, and industrial automation — all three are government priority sectors for 2030.</div>
+        <div class="badges"><span class="promise-badge">Smart Grid + Rail</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">4</div><div><div class="stock-name">Bharat Electronics (BEL)</div><div class="stock-ticker">NSE: BEL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹285 <small>/share</small></div><div class="stock-high">52W High: ₹340</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.08 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>38x</value></div>
+        <div class="stock-stat"><label>Defence Order Book</label><value>₹73,000 Cr</value></div>
+        <div class="stock-stat"><label>Revenue CAGR</label><value>15%+ target</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:87%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Defence budget freezes during fiscal stress. 2020: COVID delayed defence ministry procurement. 2024: Defence stocks corrected after massive re-rating (2022–24 bull run). Down 16% from 52W high. India's defence budget growing at 10%+ annually. Atma Nirbhar Bharat = BEL is primary beneficiary. ₹73,000 Cr order book.</div>
+        <div class="badges"><span class="promise-badge">Defence Monopoly</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">5</div><div><div class="stock-name">HAL (Hindustan Aeronautics)</div><div class="stock-ticker">NSE: HAL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹4,010 <small>/share</small></div><div class="stock-high">52W High: ₹5,675</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.69 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>30x</value></div>
+        <div class="stock-stat"><label>Order Book</label><value>₹94,000 Cr</value></div>
+        <div class="stock-stat"><label>LCA Tejas, LCH</label><value>Production ongoing</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Defence procurement delays. IPO was in 2018 — post-listing correction was deep. 2024: Defence sector de-rating after massive 2022–24 bull run. Down 29% from 52W high. ₹94,000 Cr order book = 7+ years revenue visibility. India's aerospace ambitions are irreversible — HAL is the only maker.</div>
+        <div class="badges"><span class="promise-badge">India Aerospace</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">6</div><div><div class="stock-name">Kalyan Jewellers</div><div class="stock-ticker">NSE: KALYANKJIL</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹480 <small>/share</small></div><div class="stock-high">52W High: ₹820</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹49,300 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>47x</value></div>
+        <div class="stock-stat"><label>Stores</label><value>275+ (Middle East+India)</value></div>
+        <div class="stock-stat"><label>Revenue Growth</label><value>25%+ YoY</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Retail shutdown (weddings postponed). 2024: Post-high valuations correction + some allegations of related party transactions. Down 41% from 52W high. Organised jewellery replacing unorganised (GST impact). Middle class India + NRI gold buying = long runway. Aggressive store expansion in Tier 2–3 cities.</div>
+        <div class="badges"><span class="value-badge">India Jewellery Leader</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">7</div><div><div class="stock-name">Cummins India</div><div class="stock-ticker">NSE: CUMMINSIND</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹3,060 <small>/share</small></div><div class="stock-high">52W High: ₹4,171</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹84,800 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>42x</value></div>
+        <div class="stock-stat"><label>Diesel Gensets</label><value>India market leader</value></div>
+        <div class="stock-stat"><label>Data Center</label><value>Power demand surge</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Industrial activity collapse. 2022–24: EV/green transition fears (diesel engines). 2024: Post-run correction. Down 27% from 52W high. Data centers need diesel gen-sets for backup power — AI boom = data center boom = Cummins boom. Also expanding into hydrogen power generation.</div>
+        <div class="badges"><span class="promise-badge">Data Center Power</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">8</div><div><div class="stock-name">Thermax</div><div class="stock-ticker">NSE: THERMAX</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹3,490 <small>/share</small></div><div class="stock-high">52W High: ₹5,490</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹41,500 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>44x</value></div>
+        <div class="stock-stat"><label>Order Book</label><value>₹10,500 Cr</value></div>
+        <div class="stock-stat"><label>Green Energy</label><value>Waste heat recovery</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:79%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Industrial capex freeze. 2012–16: New power projects stopped (environmental clearance issues). 2020: Covid industrial shutdown. 2024: After a massive re-rating to ₹5,490, correction came. Down 36% from 52W high. Industrial energy + green solutions + water treatment = India sustainability play.</div>
+        <div class="badges"><span class="value-badge">Industrial Green</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">9</div><div><div class="stock-name">KEC International</div><div class="stock-ticker">NSE: KEC</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹685 <small>/share</small></div><div class="stock-high">52W High: ₹1,000</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹17,600 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>33x</value></div>
+        <div class="stock-stat"><label>Transmission Lines</label><value>Global leader</value></div>
+        <div class="stock-stat"><label>Order Book</label><value>₹33,000 Cr</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:81%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: International projects (Middle East, Americas) delayed. 2021–22: Commodity inflation squeezed margins on fixed-price contracts. 2024: Margin recovery took longer than expected. Down 31% from 52W high. Power transmission is the backbone of India's renewable energy goals — cannot be skipped.</div>
+        <div class="badges"><span class="promise-badge">Power Infra Winner</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">10</div><div><div class="stock-name">IRFC (Railway Finance)</div><div class="stock-ticker">NSE: IRFC</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹168 <small>/share</small></div><div class="stock-high">52W High: ₹229</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹2.19 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>28x</value></div>
+        <div class="stock-stat"><label>Revenue Model</label><value>100% govt-backed</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>1.9%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2024: Post massive re-rating correction (IPO ₹26 → ₹229). FII exit from PSU financial stocks. Down 27% from high. Risk-free lending model (funds Indian Railways — sovereign guarantee). India's railway electrification + Vande Bharat = multi-year capex. Dividend growing each year.</div>
+        <div class="badges"><span class="promise-badge">Risk-Free Growth</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== REALTY ===== -->
+<div id="sector-realty" class="sector-section">
+  <div class="sector-header">
+    <div class="sector-icon" style="background:#fce7f3;">🏢</div>
+    <div>
+      <div class="sector-title">Real Estate &amp; REITs</div>
+      <div class="sector-subtitle">After a decade of pain (2010–2020), Indian real estate is in a genuine upcycle</div>
+    </div>
+  </div>
+  <div class="crash-reason-box">
+    <h3>Why real estate falls in crisis</h3>
+    <p>Real estate stocks are leveraged and illiquid by nature — they crash the hardest in every crisis. In 2008, DLF fell from ₹1,200 to ₹100 (93% crash). In 2010–2017, RERA uncertainty, GST implementation, demonetization, and NBFC crisis (prime lenders to real estate) caused a decade-long slump. In 2020, sales halted for months. In 2024–25, high interest rates kept affordability stretched. But India's housing shortage (estimated 30 million units) and organised sector growth (from ≤10% to 30%+ market share) creates a powerful structural tailwind.</p>
+  </div>
+  <div class="stocks-grid">
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">1</div><div><div class="stock-name">DLF</div><div class="stock-ticker">NSE: DLF</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹710 <small>/share</small></div><div class="stock-high">52W High: ₹967</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.75 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>43x</value></div>
+        <div class="stock-stat"><label>Luxury Sales</label><value>₹72,000 Cr 5700 units</value></div>
+        <div class="stock-stat"><label>Debt</label><value>Near Zero (DLF)</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Fell from ₹1,200 to ₹100 — promoter debt and leveraged realty model. 2010–2018: RERA implementation, demonetization (80% of realty was cash), GST disrupted pricing. Debt was crippling. Now nearly debt-free. ₹72,000 Cr luxury booking shows demand is extraordinary. Down 27% from high.</div>
+        <div class="badges"><span class="promise-badge">India #1 Developer</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">2</div><div><div class="stock-name">Godrej Properties</div><div class="stock-ticker">NSE: GODREJPROP</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹2,210 <small>/share</small></div><div class="stock-high">52W High: ₹3,401</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹61,300 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>47x</value></div>
+        <div class="stock-stat"><label>Sales FY25</label><value>₹27,000+ Cr</value></div>
+        <div class="stock-stat"><label>Cities</label><value>12 major cities</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:83%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Real estate sales halted. 2022–23: High land acquisition cost + interest rate rise. 2024: Regulatory approvals delayed in some projects. Down 35% from 52W high. Godrej brand = trust premium with homebuyers. Top 3 in every city it enters. Sales velocity unmatched in industry.</div>
+        <div class="badges"><span class="promise-badge">Premium Developer</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">3</div><div><div class="stock-name">Prestige Estates</div><div class="stock-ticker">NSE: PRESTIGE</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,255 <small>/share</small></div><div class="stock-high">52W High: ₹2,119</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹50,200 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>48x</value></div>
+        <div class="stock-stat"><label>Bengaluru Leader</label><value>Dominant brand</value></div>
+        <div class="stock-stat"><label>Commercial + Resi</label><value>Diversified</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:81%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Sold commercial portfolio to Blackstone (needed cash). 2024: High project launches led to concern about delivery risk + high capex. Down 41% from 52W high — one of the steepest in quality real estate. South India's most trusted real estate brand with decades of delivery track record.</div>
+        <div class="badges"><span class="value-badge">South India Leader</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">4</div><div><div class="stock-name">Macrotech (Lodha)</div><div class="stock-ticker">NSE: LODHA</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,145 <small>/share</small></div><div class="stock-high">52W High: ₹1,927</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹1.12 L Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>26x</value></div>
+        <div class="stock-stat"><label>Sales FY25</label><value>₹17,800 Cr</value></div>
+        <div class="stock-stat"><label>Mumbai Leader</label><value>Dominant presence</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2016–20: London projects (Grosvenor Square) + high debt nearly bankrupted the group. Sold UK, reduced debt massively. IPO in 2021. 2024: QIP dilution + high debt concerns returning. Down 41% from 52W high. Mumbai + Pune + Bengaluru — India's most expensive markets with permanent demand.</div>
+        <div class="badges"><span class="value-badge">Debt Reduction Story</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">5</div><div><div class="stock-name">Embassy Office Parks REIT</div><div class="stock-ticker">NSE: EMBASSY</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹348 <small>/share</small></div><div class="stock-high">52W High: ₹421</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹30,500 Cr</value></div>
+        <div class="stock-stat"><label>Distribution Yield</label><value>7.1%</value></div>
+        <div class="stock-stat"><label>Office Portfolio</label><value>46 Mn Sq Ft</value></div>
+        <div class="stock-stat"><label>Occupancy</label><value>87%</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Work-from-home = commercial office demand feared dead permanently. 2022–24: Global interest rate hike made REIT yields less attractive (REITs compete with bonds). Down 17% from high. India's office demand from GCCs (Global Capability Centers) is at all-time highs. 7.1% distribution yield is excellent.</div>
+        <div class="badges"><span class="promise-badge">REIT Income</span><span class="etf-badge">REIT</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">6</div><div><div class="stock-name">Mindspace REIT</div><div class="stock-ticker">NSE: MINDSPACE</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹328 <small>/share</small></div><div class="stock-high">52W High: ₹360</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹19,800 Cr</value></div>
+        <div class="stock-stat"><label>Distribution Yield</label><value>6.8%</value></div>
+        <div class="stock-stat"><label>Office Portfolio</label><value>32 Mn Sq Ft</value></div>
+        <div class="stock-stat"><label>Sponsor</label><value>K Raheja Corp</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:77%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Same REIT structural headwinds as Embassy — rising bond yields made REIT yields relatively less attractive. Work-from-home fears. Down 9% from high — relatively resilient. Hyderabad + Mumbai + Pune + Chennai office portfolio — tech city hubs with irreplaceable locations. 6.8% yield is real cash.</div>
+        <div class="badges"><span class="promise-badge">Office REIT</span><span class="etf-badge">REIT</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">7</div><div><div class="stock-name">Phoenix Mills</div><div class="stock-ticker">NSE: PHOENIXLTD</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,680 <small>/share</small></div><div class="stock-high">52W High: ₹1,900</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹29,500 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>56x</value></div>
+        <div class="stock-stat"><label>Mall Consumption</label><value>₹11,000 Cr/year</value></div>
+        <div class="stock-stat"><label>Malls</label><value>10 operational</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Malls shutdown for 6+ months — zero revenue. E-commerce fear that physical retail is dead. 2024: High valuations correction. Down 12% from high. India's best mall operator — retail consumption growing at 12%+ annually. Premium lifestyle malls irreplaceable in India's metro cities. Expansion to Tier-2 cities planned.</div>
+        <div class="badges"><span class="promise-badge">Retail Infrastructure</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">8</div><div><div class="stock-name">Oberoi Realty</div><div class="stock-ticker">NSE: OBEROIRLTY</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,595 <small>/share</small></div><div class="stock-high">52W High: ₹2,341</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹58,000 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>16x (cheap)</value></div>
+        <div class="stock-stat"><label>Luxury Mumbai</label><value>₹15–100 Cr apartments</value></div>
+        <div class="stock-stat"><label>Net Debt</label><value>Minimal</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Luxury real estate feared most impacted (high-ticket items freeze first in uncertainty). 2024: Profit-booking after massive run. Down 32% from 52W high. Ultra-premium Mumbai addresses — Worli, Mulund, Borivali. Minimal debt. HNWI (high net worth) demand for premium housing in Mumbai remains insatiable.</div>
+        <div class="badges"><span class="value-badge">Luxury Realty Value</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">9</div><div><div class="stock-name">Brigade Enterprises</div><div class="stock-ticker">NSE: BRIGADE</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹1,040 <small>/share</small></div><div class="stock-high">52W High: ₹1,509</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹24,800 Cr</value></div>
+        <div class="stock-stat"><label>P/E Ratio</label><value>23x</value></div>
+        <div class="stock-stat"><label>Bengaluru Focus</label><value>#2 developer</value></div>
+        <div class="stock-stat"><label>Hospitality</label><value>Brigade Orchards</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:79%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2020: Commercial office + residential slowdown. 2024: High capex on new project launches + debt concerns. Down 31% from 52W high. Bengaluru is India's most undersupplied property market — tech company expansion is never-ending. Brigade hotels segment recovering strongly post-COVID.</div>
+        <div class="badges"><span class="value-badge">Bengaluru Play</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">10</div><div><div class="stock-name">Nexus Select Trust REIT</div><div class="stock-ticker">NSE: NEXUS</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹123 <small>/share</small></div><div class="stock-high">52W High: ₹157</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>Market Cap</label><value>₹12,100 Cr</value></div>
+        <div class="stock-stat"><label>Distribution Yield</label><value>6.3%</value></div>
+        <div class="stock-stat"><label>Malls</label><value>17 across India</value></div>
+        <div class="stock-stat"><label>Sponsor</label><value>Blackstone</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Newest REIT (IPO 2023) — limited track record. Rising bond yields. 2024: General REIT selloff. Down 22% from high. Blackstone's India retail REIT — one of India's most prestigious sponsors. Mall consumption at all-time highs. 6.3% yield growing as new malls open. Blackstone has never failed an Indian exit.</div>
+        <div class="badges"><span class="promise-badge">Retail REIT</span><span class="etf-badge">REIT</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== ETF/BeES ===== -->
+<div id="sector-etf" class="sector-section">
+  <div class="sector-header">
+    <div class="sector-icon" style="background:#ede9fe;">📊</div>
+    <div>
+      <div class="sector-title">ETF &amp; BeES (Basket Exchange-Traded Funds)</div>
+      <div class="sector-subtitle">Diversified, low-cost, tax-efficient — the smartest way to capture India's long-term growth</div>
+    </div>
+  </div>
+  <div class="crash-reason-box">
+    <h3>Why ETFs fall in crisis</h3>
+    <p>ETFs mirror the underlying index or sector exactly — they fall as much as the index. Nifty 50 ETFs fell 38% in 2020, 55% in 2008. Sectoral ETFs fall even more (PSU Bank ETF fell 60%+ in 2020). But this is exactly the opportunity — ETFs eliminate stock-selection risk, have ultra-low expense ratios (0.05–0.20%), and are perfectly liquid for SIP investments. During every crash, SIP investors who continued into Nifty BeES made extraordinary wealth over 5–10 year periods. ETFs are the safest form of "India story" investing.</p>
+  </div>
+  <div class="stocks-grid">
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">1</div><div><div class="stock-name">Nippon India Nifty BeES</div><div class="stock-ticker">NSE: NIFTYBEES</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹254 <small>/unit</small></div><div class="stock-high">52W High: ₹293</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>AUM</label><value>₹23,000 Cr</value></div>
+        <div class="stock-stat"><label>Expense Ratio</label><value>0.04%</value></div>
+        <div class="stock-stat"><label>Tracks</label><value>Nifty 50 Index</value></div>
+        <div class="stock-stat"><label>Liquidity</label><value>Highest in India ETF</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Falls exactly with Nifty 50: 2008 (–55%), 2020 (–38%), 2024 (–14%). Each crash followed by record highs. India's most liquid ETF — spreads are near zero. 0.04% expense ratio means you keep nearly all returns. ₹500 SIP every month — this single ETF has made millionaires from middle-class investors over 15 years.</div>
+        <div class="badges"><span class="promise-badge">SIP Wealth Creator</span><span class="etf-badge">Nifty ETF</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">2</div><div><div class="stock-name">Nippon India Bank BeES</div><div class="stock-ticker">NSE: BANKBEES</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹502 <small>/unit</small></div><div class="stock-high">52W High: ₹550</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>AUM</label><value>₹7,800 Cr</value></div>
+        <div class="stock-stat"><label>Expense Ratio</label><value>0.19%</value></div>
+        <div class="stock-stat"><label>Tracks</label><value>Nifty Bank Index</value></div>
+        <div class="stock-stat"><label>Holdings</label><value>Top 12 Indian banks</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2008: Banking crisis globally. 2020: COVID moratorium fears. 2024: FII exit from banking. Always recovers faster than broader index after banking crises because India's credit cycle is young. Bank Nifty hit all-time high of 60,114 in 2025. Ideal for those wanting to bet on India's banking growth without picking stocks.</div>
+        <div class="badges"><span class="promise-badge">Banking Growth ETF</span><span class="etf-badge">Sectoral ETF</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">3</div><div><div class="stock-name">CPSE ETF (PSU Stocks)</div><div class="stock-ticker">NSE: CPSEETF</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹98 <small>/unit</small></div><div class="stock-high">52W High: ₹115</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>AUM</label><value>₹38,000 Cr</value></div>
+        <div class="stock-stat"><label>Expense Ratio</label><value>0.03% (ultra-low)</value></div>
+        <div class="stock-stat"><label>Dividend Yield</label><value>5.5%+</value></div>
+        <div class="stock-stat"><label>Holdings</label><value>ONGC, NTPC, BEL, HAL</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>PSU stocks crashed in every crisis plus carry permanent "government discount." 2024: FII massive PSU exit. Down 15% from high. Extraordinary dividend yield of 5.5%+ means you get paid to wait. Government is the promoter of every stock — they won't go bankrupt. Best way to bet on India's defence + energy + infra PSU supercycle.</div>
+        <div class="badges"><span class="promise-badge">PSU + Dividend ETF</span><span class="etf-badge">PSU ETF</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">4</div><div><div class="stock-name">Mirae Asset Nifty Next 50</div><div class="stock-ticker">NSE: MAFANG / NN50</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹88 <small>/unit</small></div><div class="stock-high">52W High: ₹103</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>AUM</label><value>₹1,200 Cr</value></div>
+        <div class="stock-stat"><label>Expense Ratio</label><value>0.10%</value></div>
+        <div class="stock-stat"><label>Tracks</label><value>Nifty Next 50 Index</value></div>
+        <div class="stock-stat"><label>Future Nifty 50</label><value>Tomorrow's leaders</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:87%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Nifty Next 50 fell 21% in 2024–25 — worse than Nifty 50 (–14%) as mid-large caps correct harder. But historically, Next 50 gives higher CAGR than Nifty 50 over 10 years (~14% vs ~12%). Contains future bluechips that haven't been noticed yet. Best ETF for long-term 10+ year investors who want alpha over Nifty.</div>
+        <div class="badges"><span class="promise-badge">Alpha Generator</span><span class="etf-badge">Index ETF</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">5</div><div><div class="stock-name">Motilal Oswal Midcap 150 ETF</div><div class="stock-ticker">NSE: MON150</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹62 <small>/unit</small></div><div class="stock-high">52W High: ₹82</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>AUM</label><value>₹600 Cr</value></div>
+        <div class="stock-stat"><label>Expense Ratio</label><value>0.17%</value></div>
+        <div class="stock-stat"><label>Tracks</label><value>Nifty Midcap 150</value></div>
+        <div class="stock-stat"><label>Historical CAGR</label><value>17%+ (10 year)</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Midcaps fell 13.58% in 2024–25 correction. In 2018–20 bear market, midcap index fell 40%+. In 2008, fell 65%+. But recoveries are spectacular — midcap 150 gave 30%+ CAGR in 2021 and 2023–24. Currently 24% below 52W high — historically the best entry point for 3–5 year investors.</div>
+        <div class="badges"><span class="value-badge">High Alpha Entry</span><span class="etf-badge">Midcap ETF</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">6</div><div><div class="stock-name">SBI Gold ETF</div><div class="stock-ticker">NSE: SBIGETS</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹73 <small>/unit</small></div><div class="stock-high">52W High: ₹79</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>AUM</label><value>₹3,800 Cr</value></div>
+        <div class="stock-stat"><label>Expense Ratio</label><value>0.20%</value></div>
+        <div class="stock-stat"><label>Tracks</label><value>Domestic Gold Price</value></div>
+        <div class="stock-stat"><label>Gold 5Y Return</label><value>18%+ CAGR</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Gold ETFs only fall when interest rates rise sharply (2022 US Fed rate hikes) — gold competes with bond yields. In every equity market crash, gold RISES (safe haven). Gold ETFs rose 25%+ in 2020 COVID crisis while equities fell 40%. The perfect portfolio hedge — 5–10% allocation recommended.</div>
+        <div class="badges"><span class="promise-badge">Crisis Hedge</span><span class="etf-badge">Gold ETF</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">7</div><div><div class="stock-name">Nippon India ETF Nifty IT</div><div class="stock-ticker">NSE: ITBEES</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹37 <small>/unit</small></div><div class="stock-high">52W High: ₹52</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>AUM</label><value>₹2,800 Cr</value></div>
+        <div class="stock-stat"><label>Expense Ratio</label><value>0.19%</value></div>
+        <div class="stock-stat"><label>Tracks</label><value>Nifty IT Index</value></div>
+        <div class="stock-stat"><label>Holdings</label><value>TCS, Infy, HCL, Wipro</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022–23: US tech recession killed IT spending — ITBEES fell 30%+. 2024: AI disruption fears. Currently 29% below 52W high — biggest correction in IT ETF since 2022. AI is creating a massive new demand for Indian IT services — GenAI implementations, cloud migrations, enterprise transformation. This correction is the entry window.</div>
+        <div class="badges"><span class="value-badge">IT Sector Entry</span><span class="etf-badge">IT ETF</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">8</div><div><div class="stock-name">Mirae Asset NYSE FANG+</div><div class="stock-ticker">NSE: MAFANG</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹88 <small>/unit</small></div><div class="stock-high">52W High: ₹99</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>AUM</label><value>₹2,400 Cr</value></div>
+        <div class="stock-stat"><label>Expense Ratio</label><value>0.53%</value></div>
+        <div class="stock-stat"><label>Tracks</label><value>NYSE FANG+ (US Tech)</value></div>
+        <div class="stock-stat"><label>Holdings</label><value>Nvidia, Meta, Apple, Tesla</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2022: US tech crash (Nasdaq fell 35%). 2024: USD/INR movement impacts INR returns. Currently 11% below 52W high. For Indian investors wanting global AI/tech exposure without foreign account — this is the only clean vehicle. Nvidia, Meta, Alphabet, Amazon in one INR ETF. AI supercycle beneficiary.</div>
+        <div class="badges"><span class="promise-badge">Global AI ETF</span><span class="etf-badge">International ETF</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">9</div><div><div class="stock-name">Edelweiss MSCI India Domestic</div><div class="stock-ticker">NSE: EDINDIA</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹22 <small>/unit</small></div><div class="stock-high">52W High: ₹28</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>AUM</label><value>₹350 Cr</value></div>
+        <div class="stock-stat"><label>Expense Ratio</label><value>0.30%</value></div>
+        <div class="stock-stat"><label>Focus</label><value>India-facing companies</value></div>
+        <div class="stock-stat"><label>FII-Light</label><value>Less FII-sensitive</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:81%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>2024: FII exit caused broad market selloff. Down 21% from high. India domestic consumption companies — less impacted by global macro. Contains consumer discretionary, retail, healthcare, and telecom — all driven by 1.4 billion Indians' rising incomes. The "pure India" play.</div>
+        <div class="badges"><span class="promise-badge">Pure India Play</span><span class="etf-badge">Thematic ETF</span></div>
+      </div>
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-card-header">
+        <div class="stock-left"><div class="stock-rank">10</div><div><div class="stock-name">DSP Nifty 50 Equal Weight ETF</div><div class="stock-ticker">NSE: DSP50EW</div></div></div>
+        <div class="stock-price-box"><div class="stock-price">₹53 <small>/unit</small></div><div class="stock-high">52W High: ₹62</div></div>
+      </div>
+      <div class="stock-card-body">
+        <div class="stock-stat"><label>AUM</label><value>₹180 Cr</value></div>
+        <div class="stock-stat"><label>Expense Ratio</label><value>0.19%</value></div>
+        <div class="stock-stat"><label>Strategy</label><value>Equal weight all 50 stocks</value></div>
+        <div class="stock-stat"><label>Rebalance</label><value>Quarterly</value></div>
+        <div class="recovery-bar"><label>Post-crisis recovery strength</label><div class="bar-track"><div class="bar-fill" style="width:83%"></div></div></div>
+        <div class="why-fall"><strong>Why it fell</strong>Equal weight falls more than market-cap weight when large-caps outperform (like 2024 where Reliance/HDFC held up). Down 15% from high. But equal weight historically outperforms market-cap weight over 10-year periods by 2–3% CAGR as smaller Nifty 50 stocks have more room to run. Smart entry point.</div>
+        <div class="badges"><span class="promise-badge">Smart Beta</span><span class="etf-badge">Equal Weight ETF</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="disclaimer">
+  <strong>Important Disclaimer:</strong> This is educational research content only. Not financial advice. Stock prices are approximate as of Q1 2026. All investments carry risk — past recovery from crises does not guarantee future performance. Please consult a SEBI-registered advisor before investing. Do your own research (DYOR).
+</div>
+
+<script>
+function showSector(id) {
+  document.querySelectorAll('.sector-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sector-' + id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
