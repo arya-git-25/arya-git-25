@@ -260,3 +260,38 @@ ul,ol{margin:0;padding:0}
   .work > .card:not(.wide):last-child:nth-child(odd){grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
   .work > .card:not(.wide):last-child:nth-child(odd) .shot{border-bottom:0;border-right:1px solid var(--line);aspect-ratio:auto;min-height:100%}
 }
+
+
+/* Responsive navigation: keep section links available on smaller screens. */
+@media (max-width:900px){
+  .site-head .wrap{
+    height:auto;
+    min-height:68px;
+    flex-wrap:wrap;
+    gap:12px 18px;
+    padding-top:12px;
+    padding-bottom:12px;
+  }
+  .menu{
+    display:flex;
+    order:3;
+    flex:1 0 100%;
+    flex-wrap:wrap;
+    gap:8px 18px;
+    min-width:0;
+    padding-bottom:2px;
+  }
+  .menu a{font-size:.9rem}
+}
+
+/* Respect reduced-motion preferences across scrolling and component transitions. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .rv{opacity:1;transform:none}
+}
