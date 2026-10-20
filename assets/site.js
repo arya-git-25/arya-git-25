@@ -17,7 +17,7 @@
     function applyProjectFilter(filter) {
       var visible = 0;
       projectCards.forEach(function(card) {
-        var categories = (card.getAttribute("data-category") || "").split(/\\s+/);
+        var categories = (card.getAttribute("data-category") || "").split(/\s+/);
         var show = filter === "all" || categories.indexOf(filter) !== -1;
         card.hidden = !show;
         if (show) visible++;
