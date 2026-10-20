@@ -2,683 +2,300 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arya Aravind — Lead Web Developer & Full-Stack Engineer, Dubai</title>
-<meta name="description" content="Lead Web Developer with 8+ years building digital infrastructure in UAE. Laravel, React, PHP, AI automation. Available for freelance projects and full-time roles in Dubai.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arya Aravind | Freelance Full-Stack Web Developer in Dubai</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Freelance full-stack web developer in Dubai. 8+ years building fast websites, Laravel admin panels, Next.js portals, Salesforce integrations and AI automation for UAE businesses.">
+<link rel="canonical" href="https://aryaaravind.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="Arya Aravind">
+<meta name="geo.region" content="AE-DU">
+<meta name="geo.placename" content="Dubai">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arya Aravind">
+<meta property="og:title" content="Arya Aravind | Freelance Full-Stack Web Developer in Dubai">
+<meta property="og:description" content="Freelance full-stack web developer in Dubai. 8+ years building fast websites, Laravel admin panels, Next.js portals, Salesforce integrations and AI automation for UAE businesses.">
+<meta property="og:url" content="https://aryaaravind.com/">
+<meta property="og:image" content="https://aryaaravind.com/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_AE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arya Aravind | Freelance Full-Stack Web Developer in Dubai">
+<meta name="twitter:description" content="Freelance full-stack web developer in Dubai. 8+ years building fast websites, Laravel admin panels, Next.js portals, Salesforce integrations and AI automation for UAE businesses.">
+<meta name="twitter:image" content="https://aryaaravind.com/images/og.png">
+<meta name="theme-color" content="#0F6D6A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg:        #07090f;
-  --bg2:       #0d1117;
-  --bg3:       #131925;
-  --surface:   #1a2235;
-  --line:      rgba(255,255,255,0.07);
-  --line2:     rgba(255,255,255,0.13);
-  --v1: #6c47ff;
-  --v2: #3b82f6;
-  --v3: #06b6d4;
-  --v4: #a855f7;
-  --grad: linear-gradient(135deg, #6c47ff 0%, #3b82f6 50%, #06b6d4 100%);
-  --grad2: linear-gradient(135deg, #a855f7 0%, #6c47ff 50%, #3b82f6 100%);
-  --grad-text: linear-gradient(90deg, #a78bfa, #60a5fa, #34d399);
-  --text:  #f1f5ff;
-  --muted: #8b99c0;
-  --dim:   #4a5575;
-  --sans:  'Outfit', sans-serif;
-  --body:  'Space Grotesk', sans-serif;
-  --mono:  'DM Mono', monospace;
-  --max:   1160px;
-  --r:     10px;
-  --r2:    18px;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--body);
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-a { color: inherit; text-decoration: none; }
-ul { list-style: none; }
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--v1); border-radius: 2px; }
-#bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-.page-wrap { position: relative; z-index: 1; }
-
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 22px 56px;
-  transition: all 0.4s;
-}
-nav.scrolled {
-  background: rgba(7,9,15,0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--line);
-  padding: 14px 56px;
-}
-.nav-logo {
-  font-family: var(--sans); font-size: 24px; font-weight: 700;
-  letter-spacing: -0.02em;
-  background: var(--grad); -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; background-clip: text;
-}
-.nav-links { display: flex; gap: 36px; align-items: center; }
-.nav-links a { font-size: 14px; font-weight: 400; color: var(--muted); transition: color 0.2s; letter-spacing: 0.02em; }
-.nav-links a:hover { color: var(--text); }
-.nav-cta {
-  position: relative; background: var(--grad) !important; color: #fff !important;
-  padding: 10px 24px !important; border-radius: 50px !important;
-  font-size: 14px !important; font-weight: 500 !important; overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s !important; letter-spacing: 0 !important;
-}
-.nav-cta::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.15); opacity: 0; transition: opacity 0.2s; }
-.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(108,71,255,0.45) !important; }
-.nav-cta:hover::after { opacity: 1; }
-
-/* HERO */
-.hero { min-height: 100vh; display: flex; align-items: center; padding: 130px 56px 80px; position: relative; }
-.hero-inner { max-width: var(--max); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 520px; gap: 70px; align-items: center; }
-.eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 6px 16px; border-radius: 50px; border: 1px solid rgba(108,71,255,0.4); background: rgba(108,71,255,0.08); font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: #a78bfa; margin-bottom: 24px; }
-.eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: #a78bfa; animation: blink 2s infinite; }
-@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-.hero h1 { font-family: var(--sans); font-size: clamp(48px, 5.5vw, 80px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; }
-.hero h1 .grad-word { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-sub { font-size: 17px; color: var(--muted); max-width: 520px; margin-bottom: 40px; line-height: 1.85; font-weight: 300; }
-.btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
-.btn-primary { position: relative; overflow: hidden; background: var(--grad); color: #fff; padding: 15px 34px; border-radius: 50px; font-size: 15px; font-weight: 600; font-family: var(--sans); border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; display: inline-flex; align-items: center; gap: 10px; }
-.btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s; }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(108,71,255,0.5); }
-.btn-primary:hover::before { left: 100%; }
-.btn-primary:active { transform: translateY(-1px); }
-.btn-outline { position: relative; overflow: hidden; border: 1px solid var(--line2); color: var(--text); padding: 15px 34px; border-radius: 50px; font-size: 15px; font-weight: 500; font-family: var(--sans); background: transparent; cursor: pointer; transition: border-color 0.2s, transform 0.2s, background 0.2s; display: inline-flex; align-items: center; gap: 10px; }
-.btn-outline:hover { border-color: rgba(108,71,255,0.6); background: rgba(108,71,255,0.08); transform: translateY(-3px); }
-.btn-wa { background: linear-gradient(135deg, #1a8a4a, #25d366); color: #fff; padding: 15px 28px; border-radius: 50px; font-size: 15px; font-weight: 600; font-family: var(--sans); border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; }
-.btn-wa:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(37,211,102,0.4); }
-.hero-stats { display: flex; gap: 0; margin-top: 52px; }
-.stat { flex: 1; padding: 22px 24px; border: 1px solid var(--line); border-right: none; background: rgba(13,17,23,0.6); backdrop-filter: blur(10px); text-align: center; transition: background 0.25s, border-color 0.25s; }
-.stat:first-child { border-radius: 12px 0 0 12px; }
-.stat:last-child { border-radius: 0 12px 12px 0; border-right: 1px solid var(--line); }
-.stat:hover { background: rgba(108,71,255,0.08); border-color: rgba(108,71,255,0.3); z-index: 1; }
-.stat-num { font-family: var(--sans); font-size: 36px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 4px; }
-.stat-label { font-size: 11px; color: var(--dim); letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--mono); }
-.hero-visual { position: relative; }
-.hero-img-card { position: relative; border-radius: 24px; overflow: hidden; border: 1px solid rgba(108,71,255,0.25); box-shadow: 0 0 0 1px rgba(108,71,255,0.1), 0 40px 80px rgba(0,0,0,0.5), 0 0 100px rgba(108,71,255,0.15); }
-.hero-img-card img { width: 100%; height: 480px; object-fit: cover; display: block; }
-.hero-img-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,9,15,0.8) 0%, rgba(7,9,15,0.1) 60%, transparent 100%); }
-.hero-visual::before { content: ''; position: absolute; top: -40px; right: -40px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(108,71,255,0.22) 0%, transparent 70%); pointer-events: none; animation: float-orb 6s ease-in-out infinite; }
-.hero-visual::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(6,182,212,0.18) 0%, transparent 70%); pointer-events: none; animation: float-orb 8s ease-in-out infinite reverse; }
-@keyframes float-orb { 0%,100% { transform: translate(0,0); } 50% { transform: translate(16px,-16px); } }
-.img-badge { position: absolute; bottom: 20px; left: 20px; z-index: 2; background: rgba(7,9,15,0.85); border: 1px solid rgba(108,71,255,0.4); backdrop-filter: blur(12px); border-radius: 12px; padding: 12px 18px; display: flex; align-items: center; gap: 12px; }
-.badge-pulse { width: 9px; height: 9px; border-radius: 50%; background: #34d399; flex-shrink: 0; position: relative; }
-.badge-pulse::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid rgba(52,211,153,0.5); animation: pulse-ring 2s infinite; }
-@keyframes pulse-ring { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
-.badge-label strong { display: block; font-size: 13px; font-weight: 600; color: var(--text); }
-.badge-label span { font-size: 11px; color: var(--muted); }
-.skill-chip { position: absolute; z-index: 2; background: rgba(7,9,15,0.85); border: 1px solid var(--line2); backdrop-filter: blur(10px); border-radius: 8px; padding: 8px 14px; font-family: var(--mono); font-size: 12px; color: var(--muted); animation: chip-float 4s ease-in-out infinite; }
-.chip-1 { top: 24px; right: -20px; animation-delay: 0s; border-color: rgba(168,85,247,0.4); color: #c084fc; }
-.chip-2 { top: 120px; right: -30px; animation-delay: 1.3s; border-color: rgba(59,130,246,0.4); color: #60a5fa; }
-.chip-3 { top: 220px; right: -16px; animation-delay: 0.7s; border-color: rgba(6,182,212,0.4); color: #22d3ee; }
-@keyframes chip-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-
-/* SECTIONS */
-section { padding: 100px 56px; }
-.container { max-width: var(--max); margin: 0 auto; }
-.s-tag { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border-radius: 50px; background: rgba(108,71,255,0.1); border: 1px solid rgba(108,71,255,0.3); font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: #a78bfa; text-transform: uppercase; margin-bottom: 20px; }
-.s-title { font-family: var(--sans); font-size: clamp(34px, 3.8vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--text); margin-bottom: 16px; }
-.s-title .g { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.s-sub { font-size: 16px; color: var(--muted); font-weight: 300; max-width: 580px; line-height: 1.85; }
-
-/* TECH STRIP */
-.tech-strip { padding: 0 56px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; background: rgba(13,17,23,0.7); }
-.tech-track { display: flex; animation: marquee 28s linear infinite; width: max-content; padding: 22px 0; }
-.tech-track:hover { animation-play-state: paused; }
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.tech-item { display: flex; align-items: center; gap: 10px; padding: 0 32px; font-family: var(--mono); font-size: 13px; color: var(--dim); white-space: nowrap; border-right: 1px solid var(--line); transition: color 0.2s; }
-.tech-item:hover { color: var(--muted); }
-.tech-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); flex-shrink: 0; }
-
-/* ABOUT */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 64px; }
-.about-img-wrap { position: relative; }
-.about-img-frame { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/5; border: 1px solid rgba(108,71,255,0.2); box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 60px rgba(108,71,255,0.1); }
-.about-img-frame img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.9) contrast(1.05); }
-.about-accent-v { position: absolute; left: -3px; top: 40px; width: 5px; height: 80px; border-radius: 3px; background: var(--grad); }
-.about-accent-h { position: absolute; bottom: -3px; right: 40px; height: 5px; width: 80px; border-radius: 3px; background: var(--grad2); }
-.metric-float { position: absolute; background: rgba(7,9,15,0.88); border: 1px solid rgba(108,71,255,0.35); backdrop-filter: blur(12px); border-radius: 12px; padding: 14px 18px; z-index: 2; }
-.metric-float.m1 { top: 32px; right: -28px; }
-.metric-float.m2 { bottom: 80px; right: -28px; }
-.metric-num { font-family: var(--sans); font-size: 26px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-.metric-lbl { font-size: 11px; color: var(--dim); margin-top: 3px; font-family: var(--mono); }
-.about-lead { font-family: var(--sans); font-size: 22px; font-weight: 400; color: var(--text); line-height: 1.55; margin-bottom: 22px; }
-.about-lead .g { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.about-body { font-size: 15px; color: var(--muted); line-height: 1.9; font-weight: 300; margin-bottom: 20px; }
-.pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0; }
-.pillar { background: var(--bg3); border: 1px solid var(--line); border-radius: 12px; padding: 18px; transition: border-color 0.25s, transform 0.25s; cursor: default; }
-.pillar:hover { border-color: rgba(108,71,255,0.4); transform: translateY(-3px); }
-.p-icon { font-size: 22px; margin-bottom: 8px; }
-.p-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; font-family: var(--sans); }
-.p-desc { font-size: 12px; color: var(--dim); line-height: 1.6; }
-
-/* AUDIENCE */
-.audience-section { background: var(--bg2); position: relative; overflow: hidden; }
-.audience-section::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(108,71,255,0.07) 0%, transparent 70%); pointer-events: none; }
-.audience-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 64px; }
-.aud-card { background: var(--bg3); border: 1px solid var(--line); border-radius: 20px; padding: 44px 40px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; cursor: default; }
-.aud-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
-.aud-card:hover { border-color: rgba(108,71,255,0.35); transform: translateY(-6px); box-shadow: 0 30px 60px rgba(0,0,0,0.3), 0 0 40px rgba(108,71,255,0.08); }
-.aud-card:hover::before { transform: scaleX(1); }
-.aud-card.card-b::before { background: var(--grad2); }
-.aud-icon-wrap { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
-.aud-icon-wrap.i-a { background: rgba(108,71,255,0.12); border: 1px solid rgba(108,71,255,0.25); }
-.aud-icon-wrap.i-b { background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.25); }
-.aud-label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #a78bfa; margin-bottom: 12px; }
-.aud-h { font-family: var(--sans); font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 14px; line-height: 1.2; }
-.aud-body { font-size: 14px; color: var(--muted); line-height: 1.85; margin-bottom: 28px; font-weight: 300; }
-.check-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-.check-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--muted); line-height: 1.6; }
-.ci-mark { width: 20px; height: 20px; border-radius: 50%; background: rgba(108,71,255,0.15); border: 1px solid rgba(108,71,255,0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 10px; color: #a78bfa; }
-.aud-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 50px; border: 1px solid rgba(108,71,255,0.4); color: #a78bfa; font-size: 14px; font-weight: 500; font-family: var(--sans); background: rgba(108,71,255,0.05); transition: background 0.2s, transform 0.2s, box-shadow 0.2s; cursor: pointer; }
-.aud-btn:hover { background: rgba(108,71,255,0.15); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(108,71,255,0.2); }
-
-/* SERVICES */
-.services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 52px; }
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.svc-card { background: var(--bg3); border: 1px solid var(--line); border-radius: 18px; padding: 32px 26px; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; cursor: default; }
-.svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--grad); transform: scaleX(0); transition: transform 0.3s; }
-.svc-card:hover { border-color: rgba(108,71,255,0.3); transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.3), 0 0 30px rgba(108,71,255,0.07); }
-.svc-card:hover::after { transform: scaleX(1); }
-.svc-num { font-family: var(--mono); font-size: 11px; color: var(--dim); letter-spacing: 0.12em; margin-bottom: 18px; }
-.svc-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; background: rgba(108,71,255,0.1); border: 1px solid rgba(108,71,255,0.2); transition: background 0.25s; }
-.svc-card:hover .svc-icon { background: rgba(108,71,255,0.2); }
-.svc-title { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
-.svc-desc { font-size: 13px; color: var(--dim); line-height: 1.8; font-weight: 300; }
-.svc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
-.tag { font-family: var(--mono); font-size: 10px; padding: 3px 10px; border-radius: 4px; background: rgba(255,255,255,0.04); border: 1px solid var(--line); color: var(--dim); letter-spacing: 0.04em; }
-
-/* SKILLS */
-.skills-section { background: var(--bg2); }
-.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
-.sk-group { background: var(--bg3); border: 1px solid var(--line); border-radius: 16px; padding: 26px; transition: border-color 0.25s, transform 0.25s; }
-.sk-group:hover { border-color: rgba(108,71,255,0.3); transform: translateY(-4px); }
-.sk-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #a78bfa; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
-.sk-list { display: flex; flex-direction: column; gap: 10px; }
-.sk-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
-.sk-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--grad); flex-shrink: 0; }
-
-/* CONTACT */
-.contact-section { position: relative; overflow: hidden; }
-.contact-section::before { content: ''; position: absolute; bottom: -200px; right: -100px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(108,71,255,0.07) 0%, transparent 70%); pointer-events: none; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 64px; align-items: start; }
-.contact-lead { font-family: var(--sans); font-size: 20px; font-weight: 300; color: var(--muted); line-height: 1.7; margin-bottom: 40px; }
-.contact-lead .g { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 500; }
-.contact-links { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
-.c-link { display: flex; align-items: center; gap: 16px; padding: 18px 22px; background: var(--bg3); border: 1px solid var(--line); border-radius: 14px; transition: border-color 0.2s, transform 0.2s; cursor: pointer; }
-.c-link:hover { border-color: rgba(108,71,255,0.35); transform: translateX(6px); }
-.c-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(108,71,255,0.1); border: 1px solid rgba(108,71,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-.c-lbl { font-size: 11px; color: var(--dim); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 3px; font-family: var(--mono); }
-.c-val { font-size: 14px; color: var(--text); font-weight: 400; }
-.wa-cta { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: rgba(37,211,102,0.07); border: 1px solid rgba(37,211,102,0.25); border-radius: 16px; cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; text-decoration: none; }
-.wa-cta:hover { background: rgba(37,211,102,0.12); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(37,211,102,0.15); }
-.wa-circle { width: 48px; height: 48px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
-.wa-text-main { font-size: 16px; font-weight: 600; color: #4ade80; font-family: var(--sans); margin-bottom: 2px; }
-.wa-text-sub { font-size: 12px; color: rgba(74,222,128,0.6); }
-
-/* FORM — Formspree */
-.form-card { background: var(--bg3); border: 1px solid var(--line); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; }
-.form-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); }
-.form-card-title { font-family: var(--sans); font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 6px; }
-.form-card-sub { font-size: 13px; color: var(--dim); margin-bottom: 30px; }
-.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.f-group { margin-bottom: 14px; }
-.f-group label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dim); margin-bottom: 8px; font-family: var(--mono); }
-.f-group input, .f-group select, .f-group textarea { width: 100%; background: var(--bg2); border: 1px solid var(--line); border-radius: var(--r); color: var(--text); font-family: var(--body); font-size: 14px; padding: 13px 16px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; }
-.f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: rgba(108,71,255,0.6); box-shadow: 0 0 0 3px rgba(108,71,255,0.1); }
-.f-group input::placeholder, .f-group textarea::placeholder { color: var(--dim); }
-.f-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a5575' stroke-width='1.5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
-.f-group select option { background: #131925; }
-.f-group textarea { min-height: 110px; resize: vertical; }
-.f-submit { width: 100%; background: var(--grad); color: #fff; border: none; border-radius: 50px; padding: 15px; font-size: 15px; font-weight: 600; font-family: var(--sans); cursor: pointer; margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s; position: relative; overflow: hidden; }
-.f-submit::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s; }
-.f-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(108,71,255,0.45); }
-.f-submit:hover:not(:disabled)::before { left: 100%; }
-.f-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-.f-note { font-size: 11px; color: var(--dim); text-align: center; margin-top: 12px; line-height: 1.6; }
-.f-note a { color: #a78bfa; }
-#form-success { display: none; text-align: center; padding: 32px; }
-#form-success .s-icon { font-size: 52px; margin-bottom: 16px; }
-#form-success h3 { font-family: var(--sans); font-size: 26px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
-#form-success p { font-size: 14px; color: var(--muted); }
-
-/* FOOTER */
-footer { border-top: 1px solid var(--line); padding: 36px 56px; background: var(--bg); }
-.footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-.footer-logo { font-family: var(--sans); font-size: 20px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.footer-copy { font-size: 12px; color: var(--dim); }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 13px; color: var(--dim); transition: color 0.2s; }
-.footer-links a:hover { color: #a78bfa; }
-
-/* FLOAT WA */
-.float-wa { position: fixed; bottom: 32px; right: 32px; width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #1a8a4a, #25d366); display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 6px 24px rgba(37,211,102,0.4); z-index: 99; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
-.float-wa:hover { transform: scale(1.12) translateY(-2px); box-shadow: 0 10px 36px rgba(37,211,102,0.6); }
-
-/* ANIMATIONS */
-.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
-.reveal.up { opacity: 1; transform: translateY(0); }
-
-/* RESPONSIVE */
-@media (max-width: 1000px) {
-  section, nav, footer, .tech-strip { padding-left: 28px; padding-right: 28px; }
-  nav.scrolled { padding-left: 28px; padding-right: 28px; }
-  .hero { padding: 120px 28px 70px; }
-  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .hero-visual { display: none; }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-img-wrap { max-width: 400px; }
-  .about-img-frame { aspect-ratio: 3/2; }
-  .audience-cards { grid-template-columns: 1fr; }
-  .services-header { grid-template-columns: 1fr; gap: 20px; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
-  .skills-grid { grid-template-columns: 1fr 1fr; }
-  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-  .f-row { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-}
-@media (max-width: 600px) {
-  .hero h1 { font-size: 40px; }
-  .services-grid { grid-template-columns: 1fr; }
-  .skills-grid { grid-template-columns: 1fr; }
-  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
-  .stat:nth-child(2) { border-right: 1px solid var(--line); border-radius: 0; }
-  .stat:nth-child(3) { border-radius: 0; border-top: none; }
-  .form-card { padding: 24px; }
-  .pillars { grid-template-columns: 1fr; }
-}
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://aryaaravind.com/#site", "url": "https://aryaaravind.com/", "name": "Arya Aravind", "inLanguage": "en"}, {"@type": "Person", "@id": "https://aryaaravind.com/#arya", "name": "Arya Aravind", "url": "https://aryaaravind.com/", "image": "https://aryaaravind.com/images/arya.png", "jobTitle": "Full-Stack Web Developer", "description": "Freelance full-stack web developer in Dubai with 8+ years building websites, admin systems and CRM integrations for UAE businesses.", "email": "mailto:aryaaravind1994@gmail.com", "telephone": "+971501264533", "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"}, "worksFor": {"@type": "Organization", "name": "Elysian Real Estate", "url": "https://elysian.com"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "Amal Jyothi College of Engineering"}, "knowsLanguage": ["English", "Hindi", "Malayalam"], "knowsAbout": ["Laravel", "PHP", "Filament", "Next.js", "Astro", "React", "Python", "MySQL", "PostgreSQL", "Supabase", "Salesforce integration", "Technical SEO", "Core Web Vitals", "Claude API", "AI automation", "Real estate websites"], "sameAs": ["https://www.linkedin.com/in/aryaaravind1994", "https://github.com/arya-git-25"]}, {"@type": "ProfessionalService", "@id": "https://aryaaravind.com/#service", "name": "Arya Aravind, Freelance Web Developer", "url": "https://aryaaravind.com/", "image": "https://aryaaravind.com/images/og.png", "description": "Freelance web development in Dubai: websites, Laravel admin panels, Next.js portals, Salesforce integrations, AI automation and technical SEO.", "founder": {"@id": "https://aryaaravind.com/#arya"}, "email": "aryaaravind1994@gmail.com", "telephone": "+971501264533", "address": {"@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE"}, "areaServed": [{"@type": "City", "name": "Dubai"}, {"@type": "Country", "name": "United Arab Emirates"}, {"@type": "Place", "name": "GCC"}], "knowsLanguage": ["en", "hi", "ml"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Web development services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Freelance web developer in Dubai", "url": "https://aryaaravind.com/freelance-web-developer-dubai/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Laravel developer in Dubai", "url": "https://aryaaravind.com/laravel-developer-dubai/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Next.js and Astro developer in Dubai", "url": "https://aryaaravind.com/nextjs-developer-dubai/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Real estate website developer in Dubai", "url": "https://aryaaravind.com/real-estate-website-developer-dubai/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Salesforce and CRM integration developer in the UAE", "url": "https://aryaaravind.com/salesforce-integration-developer-uae/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI automation and technical SEO developer in Dubai", "url": "https://aryaaravind.com/ai-automation-developer-dubai/"}}]}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are you available for freelance web development in Dubai?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I take on freelance and contract projects, and I'm open to full-time roles. I'm based in Dubai and work with clients across the UAE, the GCC and abroad."}}, {"@type": "Question", "name": "What technologies do you work with?", "acceptedAnswer": {"@type": "Answer", "text": "Laravel and PHP (including Filament), Next.js, Astro, React, Python, MySQL, PostgreSQL and Supabase, Salesforce, Cloudflare and Vercel, and the Claude API for AI automation."}}, {"@type": "Question", "name": "How much does a website cost?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on scope. After a free 30-minute call I send a fixed quote with a timeline, so you know the cost before work starts."}}, {"@type": "Question", "name": "How long does a project take?", "acceptedAnswer": {"@type": "Answer", "text": "Most websites take 3 to 6 weeks, admin panels 2 to 6 weeks, and integrations or speed fixes 1 to 3 weeks. You see progress on a preview link every week."}}, {"@type": "Question", "name": "Do you work with real estate companies?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I've spent four years building for Dubai real estate: developer sites, an off-plan portal with 2,900+ projects, campaign pages and Salesforce lead routing."}}, {"@type": "Question", "name": "Can you fix my website's speed and SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I audit Core Web Vitals, indexing, schema and sitemaps, then fix issues in order of impact. Elysian Developments went from GTmetrix grade D to B with a 1.0s load."}}, {"@type": "Question", "name": "Do you support the website after launch?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. I offer ongoing support for hosting, security, updates and new features."}}]}]}</script>
 </head>
 <body>
-
-<canvas id="bg-canvas"></canvas>
-<div class="page-wrap">
-
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-logo">Arya.</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-inner">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="./"><span>AA</span>Arya Aravind</a>
+    <ul class="menu">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn-primary" href="https://wa.me/971501264533?text=Hi%20Arya%2C%20I%20have%20a%20project%20I%27d%20like%20to%20discuss." target="_blank" rel="noopener">Start a project</a>
+  </div>
+</header>
+<main id="main">
+<section class="hero">
+  <div class="wrap">
     <div>
-      <div class="eyebrow reveal"><div class="eyebrow-dot"></div>Dubai, UAE · Available for Work</div>
-      <h1 class="reveal" style="transition-delay:.08s">Lead Web<br>Developer<br><span class="grad-word">&amp; Engineer</span></h1>
-      <p class="hero-sub reveal" style="transition-delay:.16s">8+ years building complete digital infrastructures from scratch — full-stack Laravel &amp; React, AI-powered automation, and performance-first engineering delivering real ROI across the UAE.</p>
-      <div class="btn-row reveal" style="transition-delay:.22s">
-        <a href="#contact" class="btn-primary">Work With Me <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        <a href="https://wa.me/971501264533?text=Hi%20Arya%2C%20I%20found%20your%20website%20and%20I%27d%20like%20to%20connect." target="_blank" rel="noopener" class="btn-wa">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.093.541 4.063 1.488 5.776L0 24l6.395-1.676A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.027-1.371l-.361-.214-3.737.979 1.001-3.647-.235-.374A9.855 9.855 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
-          WhatsApp
-        </a>
-        <a href="#about" class="btn-outline">About Me</a>
+      <span class="status"><i></i>Available for freelance, contract and full-time work</span>
+      <h1><span class="kicker">Arya Aravind, freelance full-stack developer in Dubai</span>Websites that load fast, rank on Google and <em>bring in leads.</em></h1>
+      <p class="lead">For 8 years I've built websites, admin systems and CRM integrations for UAE real estate developers, brokers and trading companies, from the first brief to launch and support.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://wa.me/971501264533?text=Hi%20Arya%2C%20I%20have%20a%20project%20I%27d%20like%20to%20discuss." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg>Start a project on WhatsApp</a>
+        <a class="btn btn-ghost" href="#work">See my work</a>
       </div>
-      <div class="hero-stats reveal" style="transition-delay:.3s">
-        <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Years Exp.</div></div>
-        <div class="stat"><div class="stat-num">41%</div><div class="stat-label">Cost Reduced</div></div>
-        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Industries</div></div>
-        <div class="stat"><div class="stat-num">92</div><div class="stat-label">PageSpeed</div></div>
-      </div>
+      <ul class="facts">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Based in Dubai, UAE</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Replies within 24 hours</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>English, Hindi, Malayalam</li>
+      </ul>
     </div>
-    <div class="hero-visual reveal" style="transition-delay:.18s">
-      <div class="hero-img-card" style="background:transparent; border:none; box-shadow:none; overflow:visible;">
-        <iframe src="hero-orb.html" width="520" height="480" style="border:none; border-radius:24px; display:block;" scrolling="no"></iframe>
-      </div>
-      <div class="skill-chip chip-1">Laravel / React</div>
-      <div class="skill-chip chip-2">AI Automation</div>
-      <div class="skill-chip chip-3">Full-Stack Dev</div>
+    <div class="portrait">
+      <picture><source srcset="images/arya.webp" type="image/webp"><img src="images/arya.png" alt="Arya Aravind, full-stack web developer in Dubai" width="450" height="600" fetchpriority="high"></picture>
+      <div class="tag"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></i><div><b>Lead Web Developer</b><span>Elysian Real Estate, since 2021</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- TECH MARQUEE -->
-<div class="tech-strip">
-  <div class="tech-track">
-    <div class="tech-item"><div class="tech-dot"></div>Laravel</div>
-    <div class="tech-item"><div class="tech-dot"></div>React</div>
-    <div class="tech-item"><div class="tech-dot"></div>PHP</div>
-    <div class="tech-item"><div class="tech-dot"></div>MySQL</div>
-    <div class="tech-item"><div class="tech-dot"></div>OpenAI Integration</div>
-    <div class="tech-item"><div class="tech-dot"></div>Zapier</div>
-    <div class="tech-item"><div class="tech-dot"></div>WordPress</div>
-    <div class="tech-item"><div class="tech-dot"></div>Tailwind CSS</div>
-    <div class="tech-item"><div class="tech-dot"></div>Salesforce CRM</div>
-    <div class="tech-item"><div class="tech-dot"></div>Linux Server</div>
-    <div class="tech-item"><div class="tech-dot"></div>Git / GitHub</div>
-    <div class="tech-item"><div class="tech-dot"></div>REST API</div>
-    <div class="tech-item"><div class="tech-dot"></div>Laravel</div>
-    <div class="tech-item"><div class="tech-dot"></div>React</div>
-    <div class="tech-item"><div class="tech-dot"></div>PHP</div>
-    <div class="tech-item"><div class="tech-dot"></div>MySQL</div>
-    <div class="tech-item"><div class="tech-dot"></div>OpenAI Integration</div>
-    <div class="tech-item"><div class="tech-dot"></div>Zapier</div>
-    <div class="tech-item"><div class="tech-dot"></div>WordPress</div>
-    <div class="tech-item"><div class="tech-dot"></div>Tailwind CSS</div>
-    <div class="tech-item"><div class="tech-dot"></div>Salesforce CRM</div>
-    <div class="tech-item"><div class="tech-dot"></div>Linux Server</div>
-    <div class="tech-item"><div class="tech-dot"></div>Git / GitHub</div>
-    <div class="tech-item"><div class="tech-dot"></div>REST API</div>
+<div class="clients">
+  <div class="wrap">
+    <p>Websites and systems built for</p>
+    <ul><li>Elysian Real Estate</li><li>Elysian Developments</li><li>Esme</li><li>Emerge</li><li>Biri Group</li><li>Planworks</li></ul>
   </div>
 </div>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="s-tag reveal">About Me</div>
-    <h2 class="s-title reveal">Not just a developer — <span class="g">a one-person tech team.</span></h2>
-    <div class="about-grid">
-      <div class="about-img-wrap reveal">
-        <div class="about-accent-v"></div>
-        <div class="about-accent-h"></div>
-        <div class="about-img-frame">
-          <img src="https://raw.githubusercontent.com/arya-git-25/arya-git-25/refs/heads/main/GEN_AI.png" alt="Developer working on code" loading="lazy"/>
-        </div>
-        <div class="metric-float m1"><div class="metric-num">D→B</div><div class="metric-lbl">GTmetrix Grade</div></div>
-        <div class="metric-float m2"><div class="metric-num">41%</div><div class="metric-lbl">Cost Reduction</div></div>
-      </div>
-      <div class="reveal" style="transition-delay:.12s">
-        <p class="about-lead">I've spent 8+ years being <span class="g">the only technologist in the room</span> — and delivering more than most teams.</p>
-        <p class="about-body">Based in Dubai, I've single-handedly built and scaled complete digital infrastructures across real estate, manufacturing, logistics, and e-commerce. Architecture, front-end, back-end, AI pipelines, SEO, hosting, and security — owned end-to-end, reported directly to CEOs and GMs.</p>
-        <p class="about-body">I don't just write code — I translate business goals into working systems. AI-powered lead automation, production dashboards cutting costs by 41%, property platforms integrating live Salesforce and Property Finder feeds — built and shipped, all by me.</p>
-        <div class="pillars">
-          <div class="pillar"><div class="p-icon">⚡</div><div class="p-title">End-to-End Ownership</div><div class="p-desc">I build the whole thing, not just a slice.</div></div>
-          <div class="pillar"><div class="p-icon">🤖</div><div class="p-title">AI-First Thinking</div><div class="p-desc">OpenAI, Zapier, agentic workflows — built in.</div></div>
-          <div class="pillar"><div class="p-icon">📈</div><div class="p-title">Results-Driven</div><div class="p-desc">Measured by real business impact, always.</div></div>
-          <div class="pillar"><div class="p-icon">🇦🇪</div><div class="p-title">UAE Market Expert</div><div class="p-desc">8 years navigating Dubai's tech landscape.</div></div>
-        </div>
-        <div class="btn-row">
-          <a href="#contact" class="btn-primary" style="font-size:14px; padding:13px 28px;">Get in Touch</a>
-          <a href="https://www.linkedin.com/in/aryaaravind1994" target="_blank" rel="noopener" class="btn-outline" style="font-size:14px; padding:13px 28px;">LinkedIn <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
-        </div>
-      </div>
+<section class="section" id="results">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker">Results</span><h2>What changed for the businesses I work with</h2></div>
+      <p>Clear outcomes, each with how it was measured. Websites are only worth it if they bring in visitors, keep them and turn them into enquiries.</p>
     </div>
+    <div class="results"><article class="result"><span class="num">1.0s</span><h3>Pages load in about one second</h3><p>Slow pages lose visitors before they see anything. Elysian Developments now shows its main content in 1.0s with zero layout shift.</p><p class="proof">GTmetrix grade D → B, LCP 1.0s, CLS 0</p></article><article class="result"><span class="num">2,900+</span><h3>Project pages that keep themselves up to date</h3><p>A weekly scrape brings in new launches and price changes. Each page is written by AI, published and sent to Google with no manual work.</p><p class="proof">offplansearchuae.com, weekly automated pipeline</p></article><article class="result"><span class="num">92/100</span><h3>Mobile SEO score</h3><p>Most property searches happen on phones. Pages are built with clean structure, schema and metadata so search engines understand them.</p><p class="proof">Google PageSpeed Insights, mobile</p></article><article class="result"><span class="num">24/7</span><h3>Every enquiry answered and qualified</h3><p>An AI assistant on elysian.com replies instantly, asks the right questions and sends the lead to the right Salesforce group.</p><p class="proof">Claude API + Salesforce</p></article><article class="result"><span class="num">0</span><h3>Manual steps to get a lead into the CRM</h3><p>Forms, ads and chat route straight into Salesforce, with spam filtered out, so sales can call back while the buyer is still interested.</p><p class="proof">Zapier, Mailchimp, Salesforce</p></article><article class="result"><span class="num">41%</span><h3>Lower operating costs</h3><p>An order, production and cargo tracking system replaced manual follow-ups across three companies.</p><p class="proof">Biri Group Trading</p></article></div>
   </div>
 </section>
 
-<!-- WHO I WORK WITH -->
-<section class="audience-section" id="hire">
-  <div class="container">
-    <div class="s-tag reveal">Who I Work With</div>
-    <h2 class="s-title reveal">Two ways to work <span class="g">together</span></h2>
-    <p class="s-sub reveal">Whether you need a full-time technical lead or a trusted freelance partner — same uncompromised quality.</p>
-    <div class="audience-cards">
-      <div class="aud-card reveal">
-        <div class="aud-icon-wrap i-a">🏢</div>
-        <div class="aud-label">For Employers &amp; Recruiters</div>
-        <h3 class="aud-h">Why hire Arya for your team?</h3>
-        <p class="aud-body">Hiring a senior developer is expensive. Hiring one who does the work of three — and leads the technical vision — is rare. That's what you get.</p>
-        <ul class="check-list">
-          <li class="check-item"><div class="ci-mark">✓</div><span>Sole ownership of <strong>complete company tech stacks</strong> across UAE industries</span></li>
-          <li class="check-item"><div class="ci-mark">✓</div><span>Comfortable <strong>presenting to CEOs and GMs</strong>, translating business needs into technical reality</span></li>
-          <li class="check-item"><div class="ci-mark">✓</div><span>Full-stack + AI + DevOps + SEO — <strong>no need to hire separately</strong> for each discipline</span></li>
-          <li class="check-item"><div class="ci-mark">✓</div><span><strong>UAE residency, immediate availability</strong>, fluent in English</span></li>
-        </ul>
-        <a href="#contact" class="aud-btn">Get My CV &amp; Schedule a Call <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="aud-card card-b reveal" style="transition-delay:.12s">
-        <div class="aud-icon-wrap i-b">⭐</div>
-        <div class="aud-label">For Freelance Clients</div>
-        <h3 class="aud-h">Why choose Arya for your project?</h3>
-        <p class="aud-body">The Dubai market is flooded with developers who over-promise. I deliver enterprise-grade work, communicate in business language, and treat your project like I built my own company with it.</p>
-        <ul class="check-list">
-          <li class="check-item"><div class="ci-mark">✓</div><span>One point of contact — <strong>zero coordination overhead</strong></span></li>
-          <li class="check-item"><div class="ci-mark">✓</div><span>Real estate, e-commerce, logistics — <strong>industry-specific knowledge from day one</strong></span></li>
-          <li class="check-item"><div class="ci-mark">✓</div><span>AI integrations that <strong>genuinely save money</strong>, not gimmicks</span></li>
-          <li class="check-item"><div class="ci-mark">✓</div><span>Fast, transparent communication — <strong>you'll always know</strong> where your project stands</span></li>
-        </ul>
-        <a href="https://wa.me/971501264533?text=Hi%20Arya%2C%20I%20have%20a%20project%20I%27d%20like%20to%20discuss." target="_blank" rel="noopener" class="aud-btn" style="border-color:rgba(168,85,247,0.4); color:#c084fc;">Discuss on WhatsApp <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.093.541 4.063 1.488 5.776L0 24l6.395-1.676A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.027-1.371l-.361-.214-3.737.979 1.001-3.647-.235-.374A9.855 9.855 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg></a>
-      </div>
+<section class="section tint" id="work">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker">Selected work</span><h2>Live sites and the systems behind them</h2></div>
+      <p>Every project here is in use today. Click through to the live sites.</p>
     </div>
+    <div class="work"><article class="card wide">
+  <div class="shot"><img src="images/offplan-portal.jpg" alt="Offplan Search UAE property search homepage" width="1400" height="746" loading="lazy" decoding="async"></div>
+  <div class="body">
+    <div class="meta"><span>Elysian Real Estate</span><span class="pill">Property portal</span></div>
+    <h3>Off-plan property portal, fully automated</h3>
+    <p class="win">2,900+ projects published and kept current with zero manual work</p>
+    <p class="desc">A Dubai off-plan search portal built end to end with AI-assisted development. Data, content, images, indexing and analytics all run on their own.</p>
+    <ul class="points"><li>Scrapes developer sources every week, so new launches and price changes go live automatically</li><li>AI writes listing copy, investment highlights and FAQ schema for every project</li><li>Each new page is submitted to Google the moment it&#x27;s published</li><li>Built for Google and AI answers: server-rendered pages, answer-first AEO copy, FAQ and investment schema, self-updating sitemap</li><li>Every visitor journey is recorded, from first search to enquiry</li><li>Search by area, developer, price, handover and lifestyle, in AED, USD, EUR or GBP</li></ul>
+    <dl class="tech"><div><dt>Front end</dt><dd><span>Next.js 14</span><span>React</span><span>Tailwind CSS</span></dd></div><div><dt>Data</dt><dd><span>Supabase</span><span>PostgreSQL</span><span>Cloudinary</span></dd></div><div><dt>Automation</dt><dd><span>Python</span><span>Playwright</span><span>PyMuPDF</span><span>Claude API</span><span>Flask</span><span>Telegram Bot</span></dd></div><div><dt>SEO, AEO, GEO</dt><dd><span>Server rendering</span><span>JSON-LD</span><span>FAQ schema</span><span>AEO copy</span><span>Google Indexing API</span><span>Dynamic sitemap</span></dd></div><div><dt>Hosting</dt><dd><span>Vercel</span></dd></div></dl>
+    <div class="foot"><span class="role">Solo: architecture, build, launch<i></i>Live, refreshes weekly</span><span class="link"><a href="https://offplansearchuae.com" target="_blank" rel="noopener">Visit offplansearchuae.com ↗</a></span></div>
+  </div>
+</article><article class="card wide">
+  <div class="shot"><img src="images/elysian-com.jpg" alt="elysian.com homepage with Dubai skyline and property search" width="1400" height="746" loading="lazy" decoding="async"></div>
+  <div class="body">
+    <div class="meta"><span>Elysian Real Estate</span><span class="pill">Brokerage website</span></div>
+    <h3>elysian.com rebuild</h3>
+    <p class="win">Built to compete for the hardest searches in UAE property</p>
+    <p class="desc">Rebuilt from a slow React app into server-rendered Astro on Cloudflare, with off-plan listings that update themselves.</p>
+    <ul class="points"><li>Off-plan listings refresh automatically from the same data pipeline, with no manual uploads</li><li>Structured to rank for high-competition searches like “real estate Dubai” and “off-plan projects Dubai”</li><li>Every page server-rendered with JSON-LD schema, geo tags, dynamic sitemaps and canonical URLs</li><li>Google&#x27;s attention focused on pages that should rank: area guides and off-plan pages in the sitemap, listings and admin kept out of the index</li><li>AI chatbot qualifies buyers and routes them into segmented Salesforce groups</li><li>Full tracking: GA4, GTM, Search Console, Microsoft Clarity and ChatGPT ads conversions</li></ul>
+    <dl class="tech"><div><dt>Front end</dt><dd><span>Astro SSR</span><span>React islands</span><span>Tailwind CSS</span></dd></div><div><dt>Back end</dt><dd><span>Laravel API</span><span>MySQL</span></dd></div><div><dt>AI and CRM</dt><dd><span>Claude API</span><span>Salesforce</span></dd></div><div><dt>SEO, AEO, GEO</dt><dd><span>Server rendering</span><span>JSON-LD</span><span>Geo tags</span><span>Canonical URLs</span><span>Dynamic sitemaps</span><span>X-Robots-Tag</span></dd></div><div><dt>Hosting and data</dt><dd><span>Cloudflare Workers</span><span>Search Console</span><span>GA4</span><span>GTM</span><span>Clarity</span></dd></div></dl>
+    <div class="foot"><span class="role">Solo: front end and back end<i></i>Live</span><span class="link"><a href="https://elysian.com" target="_blank" rel="noopener">Visit elysian.com ↗</a></span></div>
+  </div>
+</article><article class="card">
+  <div class="shot"><img src="images/landing-page.jpg" alt="Dubai Waterfront Properties campaign landing page" width="1400" height="746" loading="lazy" decoding="async"></div>
+  <div class="body">
+    <div class="meta"><span>Elysian Real Estate</span><span class="pill">Lead generation</span></div>
+    <h3>Campaign landing pages</h3>
+    <p class="win">Every ad enquiry lands in Salesforce within seconds</p>
+    <p class="desc">Fast single-purpose pages for off-plan launches and investor campaigns.</p>
+    <ul class="points"><li>Launch-ready in days, not weeks</li><li>Leads routed into Salesforce with spam filtered out</li><li>UTM capture so every lead carries its ad source</li><li>Conversion events for Meta, Google and ChatGPT ads</li></ul>
+    <dl class="tech"><div><dt>Build</dt><dd><span>Astro</span><span>HTML/CSS</span><span>Tailwind CSS</span></dd></div><div><dt>Leads</dt><dd><span>Zapier</span><span>Mailchimp</span><span>Salesforce</span></dd></div><div><dt>Tracking</dt><dd><span>GTM</span><span>GA4</span></dd></div></dl>
+    <div class="foot"><span class="role">Design and build<i></i>Live</span><span class="link"><a href="https://elysian.com/dubai-waterfront-properties" target="_blank" rel="noopener">See the waterfront page ↗</a></span></div>
+  </div>
+</article><article class="card">
+  <div class="shot"><img src="images/elysian-developments.jpg" alt="Elysian Developments homepage, Design for Well-Being" width="1400" height="746" loading="lazy" decoding="async"></div>
+  <div class="body">
+    <div class="meta"><span>Elysian Developments</span><span class="pill">Brand websites</span></div>
+    <h3>Developer websites: Elysian, Emerge, Esme</h3>
+    <p class="win">GTmetrix grade D to B, 1.0s load, 92/100 mobile SEO</p>
+    <p class="desc">Editorial, image-led sites for a Dubai developer and its project brands.</p>
+    <ul class="points"><li>Main content visible in 1.0s with zero layout shift</li><li>Three brand sites managed from one admin</li><li>Event registration pages for launches</li><li>Image-heavy design kept fast with optimised media</li></ul>
+    <dl class="tech"><div><dt>Front end</dt><dd><span>Astro</span><span>React</span><span>Tailwind CSS</span></dd></div><div><dt>Back end</dt><dd><span>Laravel Filament</span><span>PHP</span><span>MySQL</span></dd></div></dl>
+    <div class="foot"><span class="role">Build, speed and SEO<i></i>Live</span><span class="link"><a href="https://elysiandevelopments.com" target="_blank" rel="noopener">Visit elysiandevelopments.com ↗</a></span></div>
+  </div>
+</article><article class="card">
+  <div class="shot"><img src="images/admin-panel.jpg" alt="Laravel Filament admin panel with agents, area guides and translations" width="1400" height="746" loading="lazy" decoding="async"></div>
+  <div class="body">
+    <div class="meta"><span>Elysian Developments</span><span class="pill">Internal system</span></div>
+    <h3>Content admin panel</h3>
+    <p class="win">Marketing runs the websites without waiting for a developer</p>
+    <p class="desc">One admin for everything the marketing team updates.</p>
+    <ul class="points"><li>94 agent profiles and 12 developments managed in one place</li><li>Blog, project details, area guides and translations</li><li>Branded email templates for Esme and Emerge</li></ul>
+    <dl class="tech"><div><dt>Stack</dt><dd><span>Laravel</span><span>Filament v3</span><span>PHP 8</span><span>MySQL</span></dd></div></dl>
+    <div class="foot"><span class="role">Solo build<i></i>In daily use</span><span class="link"><span>Internal system</span></span></div>
+  </div>
+</article><article class="card">
+  <div class="shot"><img src="images/birigroup.jpg" alt="Biri Group website with product banner" width="1400" height="746" loading="lazy" decoding="async"></div>
+  <div class="body">
+    <div class="meta"><span>Biri Group Trading</span><span class="pill">E-commerce and operations</span></div>
+    <h3>Website, store and order tracking</h3>
+    <p class="win">41% lower operating costs</p>
+    <p class="desc">One system for three companies: production, logistics and e-commerce.</p>
+    <ul class="points"><li>Orders tracked from enquiry to delivery with automatic milestone alerts</li><li>Cargo booking with live tracking for customers</li><li>Online store with a secure payment gateway</li></ul>
+    <dl class="tech"><div><dt>Stack</dt><dd><span>PHP CodeIgniter</span><span>MySQL</span><span>jQuery</span><span>AJAX</span><span>Bootstrap</span></dd></div></dl>
+    <div class="foot"><span class="role">Sole developer and IT lead<i></i>Live</span><span class="link"><a href="https://www.birigroup.com" target="_blank" rel="noopener">Visit birigroup.com ↗</a></span></div>
+  </div>
+</article><article class="card">
+  <div class="shot"><img src="images/planworks.jpg" alt="Planworks company website" width="1400" height="746" loading="lazy" decoding="async"></div>
+  <div class="body">
+    <div class="meta"><span>Planworks Communications</span><span class="pill">Company website</span></div>
+    <h3>Planworks company website</h3>
+    <p class="win">More product enquiries through SEO</p>
+    <p class="desc">Website and admin dashboard for a Dubai marketing production company, built with the CEO.</p>
+    <ul class="points"><li>Twelve service lines with catalogues and portfolio</li><li>Keyword strategy and Search Console indexing</li></ul>
+    <dl class="tech"><div><dt>Stack</dt><dd><span>PHP CodeIgniter</span><span>MySQL</span><span>Bootstrap</span><span>Search Console</span></dd></div></dl>
+    <div class="foot"><span class="role">Build and SEO<i></i>Live</span><span class="link"><a href="https://planworksme.com" target="_blank" rel="noopener">Visit planworksme.com ↗</a></span></div>
+  </div>
+</article></div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="container">
-    <div class="services-header">
-      <div><div class="s-tag reveal">Services</div><h2 class="s-title reveal">What I<br><span class="g">build for you</span></h2></div>
-      <p class="s-sub reveal">From landing page to full company digital infrastructure — end-to-end, production-grade, with measurable ROI every time.</p>
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker">Services</span><h2>How I can help</h2></div>
+      <p>Fixed quote after a free first call. You get a weekly preview link, so you always see progress.</p>
     </div>
-    <div class="services-grid">
-      <div class="svc-card reveal"><div class="svc-num">01</div><div class="svc-icon">🏗️</div><div class="svc-title">Full-Stack Web Development</div><div class="svc-desc">End-to-end applications built with Laravel, React, PHP, and MySQL. Custom admin dashboards, CRM integrations, REST APIs, and multi-site architectures.</div><div class="svc-tags"><span class="tag">Laravel</span><span class="tag">React</span><span class="tag">PHP</span><span class="tag">MySQL</span></div></div>
-      <div class="svc-card reveal" style="transition-delay:.07s"><div class="svc-num">02</div><div class="svc-icon">🤖</div><div class="svc-title">AI Automation &amp; Workflows</div><div class="svc-desc">AI-powered pipelines using OpenAI, Zapier, and webhooks. Lead qualification, chatbot integration, automated CRM routing, and agentic workflows.</div><div class="svc-tags"><span class="tag">OpenAI</span><span class="tag">Zapier</span><span class="tag">Webhooks</span><span class="tag">Chatbots</span></div></div>
-      <div class="svc-card reveal" style="transition-delay:.14s"><div class="svc-num">03</div><div class="svc-icon">🚀</div><div class="svc-title">Performance &amp; SEO</div><div class="svc-desc">Site speed overhauls, Core Web Vitals improvement, on-page SEO, Google Search Console setup. Proven GTmetrix grade D→B, PageSpeed 92/100.</div><div class="svc-tags"><span class="tag">PageSpeed</span><span class="tag">Core Web Vitals</span><span class="tag">SEO</span></div></div>
-      <div class="svc-card reveal"><div class="svc-num">04</div><div class="svc-icon">🛒</div><div class="svc-title">E-Commerce Development</div><div class="svc-desc">Full-stack e-commerce platforms with secure payment gateways, product management, order tracking, and mobile-optimised UX built to convert.</div><div class="svc-tags"><span class="tag">WooCommerce</span><span class="tag">Custom PHP</span><span class="tag">Payments</span></div></div>
-      <div class="svc-card reveal" style="transition-delay:.07s"><div class="svc-num">05</div><div class="svc-icon">☁️</div><div class="svc-title">Server, Hosting &amp; DevOps</div><div class="svc-desc">Linux server setup and management, DNS, SSL/HTTPS, Apache, firewall hardening, Google Workspace administration, and security audits.</div><div class="svc-tags"><span class="tag">Linux</span><span class="tag">Apache</span><span class="tag">SSL</span><span class="tag">DNS</span></div></div>
-      <div class="svc-card reveal" style="transition-delay:.14s"><div class="svc-num">06</div><div class="svc-icon">🏢</div><div class="svc-title">Real Estate Tech · UAE</div><div class="svc-desc">Specialist Dubai property platforms — Salesforce XML feed, Property Finder live API, off-plan listings, lead automation and CRM pipelines.</div><div class="svc-tags"><span class="tag">Salesforce</span><span class="tag">Property Finder</span><span class="tag">Laravel</span></div></div>
-    </div>
+    <div class="services"><a class="service" href="freelance-web-developer-dubai/">
+  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+  <h3>New website or web app</h3>
+  <p>Fast, search-friendly websites with an admin your team can use. Laravel, Astro or Next.js.</p>
+  <dl><dt>Good for</dt><dd>Developers, brokers, startups</dd><dt>Typical timeline</dt><dd>3–6 weeks</dd></dl>
+  <span class="more">Learn more</span>
+</a>
+<a class="service" href="laravel-developer-dubai/">
+  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></span>
+  <h3>Admin panel or dashboard</h3>
+  <p>Laravel and Filament admin panels, internal systems and dashboards built around how your team works.</p>
+  <dl><dt>Good for</dt><dd>Operations, sales, marketing teams</dd><dt>Typical timeline</dt><dd>2–6 weeks</dd></dl>
+  <span class="more">Learn more</span>
+</a>
+<a class="service" href="salesforce-integration-developer-uae/">
+  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 6h5a4 4 0 0 1 4 4v5M6 9v9"/></svg></span>
+  <h3>CRM and marketing integration</h3>
+  <p>Salesforce, Mailchimp, Zapier and ad platforms connected so every lead reaches sales.</p>
+  <dl><dt>Good for</dt><dd>Sales and marketing teams</dd><dt>Typical timeline</dt><dd>1–3 weeks</dd></dl>
+  <span class="more">Learn more</span>
+</a>
+<a class="service" href="ai-automation-developer-dubai/">
+  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+  <h3>Speed, SEO and automation</h3>
+  <p>Faster pages, technical SEO, and AI pipelines that remove manual data entry.</p>
+  <dl><dt>Good for</dt><dd>Sites that don&#x27;t rank or convert</dd><dt>Typical timeline</dt><dd>1–3 weeks</dd></dl>
+  <span class="more">Learn more</span>
+</a></div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section class="skills-section" id="skills">
-  <div class="container">
-    <div class="s-tag reveal">Skills</div>
-    <h2 class="s-title reveal">A complete <span class="g">toolkit</span></h2>
-    <div class="skills-grid">
-      <div class="sk-group reveal"><div class="sk-title">Languages &amp; Frameworks</div><ul class="sk-list"><li class="sk-item">HTML / CSS / JavaScript</li><li class="sk-item">PHP / CodeIgniter</li><li class="sk-item">Laravel</li><li class="sk-item">React / jQuery</li><li class="sk-item">Bootstrap / Tailwind</li><li class="sk-item">WordPress / MySQL</li><li class="sk-item">Ajax</li></ul></div>
-      <div class="sk-group reveal" style="transition-delay:.08s"><div class="sk-title">AI &amp; Automation</div><ul class="sk-list"><li class="sk-item">OpenAI / GPT Integration</li><li class="sk-item">Agentic AI Workflows</li><li class="sk-item">Zapier / Webhooks</li><li class="sk-item">Chatbot Integration</li><li class="sk-item">REST API / Postman</li><li class="sk-item">Salesforce CRM</li><li class="sk-item">Payment Gateways</li></ul></div>
-      <div class="sk-group reveal" style="transition-delay:.16s"><div class="sk-title">Infrastructure &amp; DevOps</div><ul class="sk-list"><li class="sk-item">Linux / Server Mgmt</li><li class="sk-item">DNS / Hosting / Domains</li><li class="sk-item">SSL / Apache / Firewall</li><li class="sk-item">Git / GitHub</li><li class="sk-item">Google Workspace</li><li class="sk-item">Cloud Services</li><li class="sk-item">Security Audits</li></ul></div>
-      <div class="sk-group reveal" style="transition-delay:.24s"><div class="sk-title">SEO &amp; Marketing</div><ul class="sk-list"><li class="sk-item">Google Search Console</li><li class="sk-item">Google Analytics</li><li class="sk-item">Core Web Vitals</li><li class="sk-item">PageSpeed Optimisation</li><li class="sk-item">Google Business Profile</li><li class="sk-item">Email / SMS Campaigns</li><li class="sk-item">Unbounce</li></ul></div>
+<section class="section teal" id="process">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker">Process</span><h2>From first call to launch</h2></div>
+      <p>Simple, predictable and transparent. No surprises on cost or timing.</p>
     </div>
+    <ol class="steps">
+      <li><h3>Free call</h3><p>30 minutes to understand your business, goals and what's not working today.</p></li>
+      <li><h3>Plan and quote</h3><p>A written scope, timeline and fixed price within two working days.</p></li>
+      <li><h3>Build with weekly previews</h3><p>You review real progress on a preview link every week and give feedback as we go.</p></li>
+      <li><h3>Launch and support</h3><p>Speed, SEO and tracking checked before launch, then ongoing support if you need it.</p></li>
+    </ol>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="container">
-    <div class="s-tag reveal">Contact</div>
-    <h2 class="s-title reveal">Let's build <span class="g">something great</span></h2>
-    <div class="contact-grid">
-      <div class="reveal">
-        <p class="contact-lead">Whether you have a project in mind, a role to fill, or just want to <span class="g">start a conversation</span> — I respond to every serious inquiry within 24 hours.</p>
-        <div class="contact-links">
-          <a href="mailto:arya.webdeveloper@gmail.com" class="c-link"><div class="c-icon">✉️</div><div><div class="c-lbl">Email</div><div class="c-val">arya.webdeveloper@gmail.com</div></div></a>
-          <a href="tel:+971501264533" class="c-link"><div class="c-icon">📞</div><div><div class="c-lbl">Phone · UAE</div><div class="c-val">+971 50 126 4533</div></div></a>
-          <a href="tel:+919895963331" class="c-link"><div class="c-icon">📱</div><div><div class="c-lbl">Phone · India</div><div class="c-val">+91 98959 63331</div></div></a>
-          <a href="https://www.linkedin.com/in/aryaaravind1994" target="_blank" rel="noopener" class="c-link"><div class="c-icon">💼</div><div><div class="c-lbl">LinkedIn</div><div class="c-val">linkedin.com/in/aryaaravind1994</div></div></a>
-        </div>
-        <a href="https://wa.me/971501264533?text=Hi%20Arya%2C%20I%20found%20your%20website%20and%20I%27d%20like%20to%20connect." target="_blank" rel="noopener" class="wa-cta">
-          <div class="wa-circle"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.093.541 4.063 1.488 5.776L0 24l6.395-1.676A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.027-1.371l-.361-.214-3.737.979 1.001-3.647-.235-.374A9.855 9.855 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg></div>
-          <div><div class="wa-text-main">Chat on WhatsApp</div><div class="wa-text-sub">+971 50 126 4533 · Usually replies within the hour</div></div>
-        </a>
-      </div>
-
-      <!-- ══ FORMSPREE CONTACT FORM ══════════════════════════════════ -->
-      <div class="form-card reveal" style="transition-delay:.12s">
-        <div id="form-body">
-          <div class="form-card-title">Send a message</div>
-          <div class="form-card-sub">Straight to my inbox — no spam, no bots.</div>
-          <div class="f-row">
-            <div class="f-group">
-              <label for="f-name">Your Name *</label>
-              <input type="text" id="f-name" name="name" placeholder="Sarah Al Mansoori" required>
-            </div>
-            <div class="f-group">
-              <label for="f-email">Email *</label>
-              <input type="email" id="f-email" name="email" placeholder="sarah@company.ae" required>
-            </div>
-          </div>
-          <div class="f-row">
-            <div class="f-group">
-              <label for="f-phone">WhatsApp / Phone</label>
-              <input type="tel" id="f-phone" name="phone" placeholder="+971 50 000 0000">
-            </div>
-            <div class="f-group">
-              <label for="f-type">I am a...</label>
-              <select id="f-type" name="inquiry_type">
-                <option value="">Select one</option>
-                <option value="Employer / Recruiter">Employer / Recruiter</option>
-                <option value="Freelance Client">Freelance Client</option>
-                <option value="Startup Founder">Startup Founder</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="f-group">
-            <label for="f-subject">Subject *</label>
-            <input type="text" id="f-subject" name="subject" placeholder="e.g. Looking for a Lead Developer" required>
-          </div>
-          <div class="f-group">
-            <label for="f-message">Message *</label>
-            <textarea id="f-message" name="message" placeholder="Tell me about your project, timeline, or the role — more detail means a better reply." required></textarea>
-          </div>
-          <!-- Formspree honeypot spam filter -->
-          <input type="text" name="_gotcha" style="display:none">
-          <button class="f-submit" id="f-btn" type="button" onclick="submitForm()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-            Send Message
-          </button>
-          <p class="f-note">Goes directly to <strong>arya.webdeveloper@gmail.com</strong>. No data stored or sold. · <a href="https://wa.me/971501264533" target="_blank">Prefer WhatsApp?</a></p>
-        </div>
-        <div id="form-success">
-          <div class="s-icon">🎉</div>
-          <h3>Message Sent!</h3>
-          <p>Thanks for reaching out. I'll reply within 24 hours.</p>
-        </div>
-      </div>
+<section class="section" id="about">
+  <div class="wrap about">
+    <div class="bio">
+      <span class="kicker">About</span>
+      <p>I'm Arya, a full-stack developer in Dubai. For most of my career I've been the only developer in the room, which means I own the whole thing: design, build, database, integrations, hosting and keeping it all running.</p>
+      <p>Today I lead web development at Elysian Real Estate, where I built elysian.com, the Elysian Developments sites and an off-plan portal with more than 2,900 projects. Before that I built the order and logistics systems for Biri Group.</p>
+      <p>I care about work that shows up in the numbers: faster pages, more enquiries and less manual work for your team.</p>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="Arya_Aravind_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></p>
     </div>
+    <ol class="timeline">
+      <li><b>Lead Web Developer</b><span>Elysian Real Estate, Dubai</span><time>2021 – now</time></li>
+      <li><b>Full-Stack Developer</b><span>Biri Group Trading, Dubai</span><time>2019 – 2021</time></li>
+      <li><b>Web Developer and Digital Marketing</b><span>Planworks Communications, Dubai</span><time>2019</time></li>
+      <li><b>Junior Web Developer</b><span>Three Seas Infologics, Kerala</span><time>2016 – 2018</time></li>
+      <li><b>B.Tech, Computer Science</b><span>Amal Jyothi College of Engineering</span><time>2011 – 2015</time></li>
+    </ol>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">Arya.</div>
-    <div class="footer-copy">© 2026 Arya Aravind · Dubai, UAE</div>
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="https://www.linkedin.com/in/aryaaravind1994" target="_blank" rel="noopener">LinkedIn</a>
+<section class="section tint" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker">FAQ</span><h2>Questions clients ask</h2></div>
+      <p>Anything else? Message me on WhatsApp and I'll answer the same day.</p>
     </div>
+    <div class="faq"><details><summary>Are you available for freelance web development in Dubai?</summary><p class="a">Yes. I take on freelance and contract projects, and I&#x27;m open to full-time roles. I&#x27;m based in Dubai and work with clients across the UAE, the GCC and abroad.</p></details><details><summary>What technologies do you work with?</summary><p class="a">Laravel and PHP (including Filament), Next.js, Astro, React, Python, MySQL, PostgreSQL and Supabase, Salesforce, Cloudflare and Vercel, and the Claude API for AI automation.</p></details><details><summary>How much does a website cost?</summary><p class="a">It depends on scope. After a free 30-minute call I send a fixed quote with a timeline, so you know the cost before work starts.</p></details><details><summary>How long does a project take?</summary><p class="a">Most websites take 3 to 6 weeks, admin panels 2 to 6 weeks, and integrations or speed fixes 1 to 3 weeks. You see progress on a preview link every week.</p></details><details><summary>Do you work with real estate companies?</summary><p class="a">Yes. I&#x27;ve spent four years building for Dubai real estate: developer sites, an off-plan portal with 2,900+ projects, campaign pages and Salesforce lead routing.</p></details><details><summary>Can you fix my website&#x27;s speed and SEO?</summary><p class="a">Yes. I audit Core Web Vitals, indexing, schema and sitemaps, then fix issues in order of impact. Elysian Developments went from GTmetrix grade D to B with a 1.0s load.</p></details><details><summary>Do you support the website after launch?</summary><p class="a">Yes. I offer ongoing support for hosting, security, updates and new features.</p></details></div>
+  </div>
+</section>
+
+<section class="section" id="github">
+  <div class="wrap">
+    <div class="head">
+      <div><span class="kicker">Open source</span><h2>Latest on GitHub</h2></div>
+      <p><a href="https://github.com/arya-git-25" target="_blank" rel="noopener">github.com/arya-git-25 ↗</a></p>
+    </div>
+    <ul class="repos" id="repos"><li class="gh-empty">Loading repositories from GitHub…</li></ul>
+  </div>
+</section>
+</main>
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Tell me about your project.</h2>
+      <p>Send a message with what you need and your timeline. I reply within 24 hours with next steps, and the first call is free.</p>
+    </div>
+    <div class="ways">
+      <a href="https://wa.me/971501264533?text=Hi%20Arya%2C%20I%20have%20a%20project%20I%27d%20like%20to%20discuss." target="_blank" rel="noopener"><span><small>WhatsApp, fastest</small><b>+971 50 126 4533</b></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg></a>
+      <a href="mailto:aryaaravind1994@gmail.com?subject=Project%20enquiry"><span><small>Email</small><b>aryaaravind1994@gmail.com</b></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      <a href="https://www.linkedin.com/in/aryaaravind1994" target="_blank" rel="noopener"><span><small>LinkedIn</small><b>in/aryaaravind1994</b></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.1a4.2 4.2 0 0 1 3.8-2c4 0 4.8 2.7 4.8 6.1V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg></a>
+    </div>
+  </div>
+</section>
+<footer class="site-foot">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="./"><span>AA</span>Arya Aravind</a>
+      <p style="margin-top:14px;max-width:40ch">Freelance full-stack developer in Dubai. Websites, admin systems, CRM integrations and AI automation for UAE businesses.</p>
+    </div>
+    <div><h4>Services</h4><ul><li><a href="freelance-web-developer-dubai/">Freelance web developer in Dubai</a></li><li><a href="laravel-developer-dubai/">Laravel developer in Dubai</a></li><li><a href="nextjs-developer-dubai/">Next.js and Astro developer in Dubai</a></li><li><a href="real-estate-website-developer-dubai/">Real estate website developer in Dubai</a></li><li><a href="salesforce-integration-developer-uae/">Salesforce and CRM integration developer in the UAE</a></li><li><a href="ai-automation-developer-dubai/">AI automation and technical SEO developer in Dubai</a></li></ul></div>
+    <div><h4>Elsewhere</h4><ul>
+      <li><a href="https://www.linkedin.com/in/aryaaravind1994" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/arya-git-25" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="Arya_Aravind_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
+      <li><a href="mailto:aryaaravind1994@gmail.com">Email</a></li>
+    </ul></div>
+    <div class="base"><span>© <span id="year">2026</span> Arya Aravind</span><span>Dubai, United Arab Emirates</span></div>
   </div>
 </footer>
-</div>
-
-<!-- FLOATING WA -->
-<a href="https://wa.me/971501264533?text=Hi%20Arya%2C%20I%20found%20your%20website%20and%20I%27d%20like%20to%20connect." target="_blank" rel="noopener" class="float-wa">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.093.541 4.063 1.488 5.776L0 24l6.395-1.676A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.877 9.877 0 01-5.027-1.371l-.361-.214-3.737.979 1.001-3.647-.235-.374A9.855 9.855 0 012.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
-</a>
-
-<script>
-/* ── CANVAS BACKGROUND ── */
-(function() {
-  const canvas = document.getElementById('bg-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [];
-  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-  function Particle() {
-    this.x = Math.random() * W; this.y = Math.random() * H;
-    this.r = Math.random() * 1.4 + 0.3;
-    this.vx = (Math.random() - 0.5) * 0.3; this.vy = (Math.random() - 0.5) * 0.3;
-    this.alpha = Math.random() * 0.5 + 0.1;
-    const cols = ['108,71,255','59,130,246','6,182,212','168,85,247'];
-    this.color = cols[Math.floor(Math.random() * cols.length)];
-  }
-  Particle.prototype.update = function() {
-    this.x += this.vx; this.y += this.vy;
-    if (this.x < 0) this.x = W; if (this.x > W) this.x = 0;
-    if (this.y < 0) this.y = H; if (this.y > H) this.y = 0;
-  };
-  function init() {
-    resize(); particles = [];
-    const count = Math.floor((W * H) / 14000);
-    for (let i = 0; i < count; i++) particles.push(new Particle());
-  }
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 130) {
-          ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(108,71,255,${0.07 * (1 - dist/130)})`; ctx.lineWidth = 0.6; ctx.stroke();
-        }
-      }
-    }
-    particles.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fillStyle = `rgba(${p.color},${p.alpha})`; ctx.fill(); p.update(); });
-    requestAnimationFrame(draw);
-  }
-  window.addEventListener('resize', () => { resize(); init(); });
-  init(); draw();
-})();
-
-/* ── NAV SCROLL ── */
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
-
-/* ── REVEAL ON SCROLL ── */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); revealObserver.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-setTimeout(() => { document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('up')); }, 100);
-
-/* ── FORMSPREE SUBMISSION ──────────────────────────────────────────
-   Endpoint: https://formspree.io/f/xaqloqrb
-   Emails land directly in arya.webdeveloper@gmail.com
-   No API keys. No setup needed. Works immediately.
-─────────────────────────────────────────────────────────────────── */
-async function submitForm() {
-  const name    = document.getElementById('f-name').value.trim();
-  const email   = document.getElementById('f-email').value.trim();
-  const phone   = document.getElementById('f-phone').value.trim();
-  const type    = document.getElementById('f-type').value;
-  const subject = document.getElementById('f-subject').value.trim();
-  const message = document.getElementById('f-message').value.trim();
-
-  if (!name || !email || !subject || !message) { alert('Please fill in all required fields.'); return; }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
-
-  const btn = document.getElementById('f-btn');
-  btn.disabled = true;
-  btn.innerHTML = '<span>Sending…</span>';
-
-  try {
-    const res = await fetch('https://formspree.io/f/xaqloqrb', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, phone: phone || 'Not provided', inquiry_type: type || 'Not specified', subject, message })
-    });
-
-    if (res.ok) {
-      document.getElementById('form-body').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    } else {
-      throw new Error('Server error');
-    }
-  } catch (err) {
-    btn.disabled = false;
-    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg> Send Message';
-    alert('Something went wrong. Please WhatsApp or email me directly at arya.webdeveloper@gmail.com');
-  }
-}
-</script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
