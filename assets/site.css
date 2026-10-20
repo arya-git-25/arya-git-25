@@ -307,3 +307,90 @@ ul,ol{margin:0;padding:0}
 .work > .card[hidden]{display:none!important}
 @media (max-width:600px){.project-tools{align-items:flex-start;flex-direction:column;margin-top:-8px}.project-filters{gap:7px}.filter-btn{padding:8px 12px;font-size:.84rem}}
 @media (prefers-reduced-motion:reduce){.filter-btn{transition:none}}
+
+
+/* Homepage refresh: clearer hierarchy, richer hero, and more confident project previews. */
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding-block:clamp(52px,7vw,88px) clamp(64px,8vw,100px);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 88% 18%,color-mix(in srgb,var(--brand) 10%,transparent),transparent 36%),
+    radial-gradient(ellipse at 8% 90%,color-mix(in srgb,var(--sand) 72%,transparent),transparent 42%);
+  pointer-events:none;
+}
+.hero .wrap{gap:clamp(36px,6vw,84px)}
+.hero .wrap>div:first-child{max-width:700px}
+.hero .status{
+  border:1px solid color-mix(in srgb,var(--brand) 14%,transparent);
+  box-shadow:0 6px 22px -18px var(--brand);
+}
+.status i{box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 12%,transparent)}
+.hero h1{
+  max-width:15ch;
+  margin-top:22px;
+  font-size:clamp(2.7rem,5.5vw,4.65rem);
+  letter-spacing:-.055em;
+  line-height:.99;
+}
+.hero h1 em{
+  text-decoration:underline;
+  text-decoration-color:color-mix(in srgb,var(--brand) 24%,transparent);
+  text-decoration-thickness:.075em;
+  text-underline-offset:.1em;
+}
+.hero .lead{max-width:48ch;line-height:1.75}
+.hero .cta{gap:10px}
+.hero .cta .btn-primary{box-shadow:0 10px 24px -16px var(--brand)}
+.portrait{
+  border:1px solid color-mix(in srgb,var(--brand) 14%,var(--line));
+  border-radius:28px;
+  box-shadow:0 30px 70px -48px rgba(15,40,40,.5);
+}
+.portrait::before{filter:blur(.2px)}
+.portrait .tag{
+  border:1px solid color-mix(in srgb,var(--line) 75%,transparent);
+  backdrop-filter:blur(12px);
+}
+.clients{position:relative}
+.clients .wrap{gap:14px 32px}
+.clients p{font-weight:500;letter-spacing:.01em}
+.clients li{font-size:clamp(.94rem,1.3vw,1.08rem)}
+/* Give featured work a stronger editorial frame without changing project content. */
+.card{
+  box-shadow:0 4px 18px -18px rgba(15,40,40,.35);
+  border-color:color-mix(in srgb,var(--line) 85%,transparent);
+}
+.card:hover{
+  border-color:color-mix(in srgb,var(--brand) 34%,var(--line));
+  box-shadow:0 24px 52px -30px rgba(15,40,40,.4);
+}
+.card .body{gap:12px}
+.card .win{font-size:1rem;line-height:1.5}
+.card .foot{gap:10px 18px}
+.card .link a{display:inline-flex;align-items:center;gap:6px}
+.card .link a:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:900px){
+  .hero{padding-top:40px}
+  .hero h1{max-width:17ch;font-size:clamp(2.6rem,7.5vw,4.1rem)}
+  .portrait{max-width:480px}
+}
+@media (max-width:600px){
+  .hero{padding-block:32px 56px}
+  .hero h1{font-size:clamp(2.35rem,10vw,3.4rem);line-height:1.02}
+  .hero .lead{font-size:1.04rem;line-height:1.7}
+  .hero .cta .btn{width:100%}
+  .hero .facts{gap:10px 16px}
+  .portrait{border-radius:22px}
+  .card .body{padding:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .card,.card:hover,.shot img,.card:hover .shot img{transform:none;transition:none}
+}
