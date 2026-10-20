@@ -295,3 +295,15 @@ ul,ol{margin:0;padding:0}
   }
   .rv{opacity:1;transform:none}
 }
+
+
+/* Selected-work filters */
+.project-tools{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:-12px 0 28px}
+.project-filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.filter-btn{appearance:none;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--muted);padding:9px 14px;min-height:40px;font:500 .88rem/1.2 var(--font);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.filter-btn:hover{border-color:var(--brand);color:var(--brand-ink)}
+.filter-btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.project-count{color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.work > .card[hidden]{display:none!important}
+@media (max-width:600px){.project-tools{align-items:flex-start;flex-direction:column;margin-top:-8px}.project-filters{gap:7px}.filter-btn{padding:8px 12px;font-size:.84rem}}
+@media (prefers-reduced-motion:reduce){.filter-btn{transition:none}}

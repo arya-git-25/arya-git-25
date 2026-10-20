@@ -95,7 +95,17 @@
       <div><span class="kicker">Selected work</span><h2>Live sites and the systems behind them</h2></div>
       <p>Every project here is in use today. Click through to the live sites.</p>
     </div>
-    <div class="work"><article class="card wide">
+    <div class="project-tools">
+      <div class="project-filters" role="group" aria-label="Filter projects">
+        <button class="filter-btn" type="button" data-project-filter="all" aria-controls="project-grid" aria-pressed="true">All work</button>
+        <button class="filter-btn" type="button" data-project-filter="websites" aria-controls="project-grid" aria-pressed="false">Websites</button>
+        <button class="filter-btn" type="button" data-project-filter="automation" aria-controls="project-grid" aria-pressed="false">Automation &amp; AI</button>
+        <button class="filter-btn" type="button" data-project-filter="leads" aria-controls="project-grid" aria-pressed="false">Lead generation</button>
+        <button class="filter-btn" type="button" data-project-filter="systems" aria-controls="project-grid" aria-pressed="false">Internal systems</button>
+      </div>
+      <p class="project-count" id="project-count" aria-live="polite">7 projects</p>
+    </div>
+    <div class="work" id="project-grid"><article class="card wide" data-category="websites automation">
   <div class="shot"><img src="images/offplan-portal.jpg" alt="Offplan Search UAE property search homepage" width="1400" height="746" loading="lazy" decoding="async"></div>
   <div class="body">
     <div class="meta"><span>Elysian Real Estate</span><span class="pill">Property portal</span></div>
@@ -106,7 +116,7 @@
     <dl class="tech"><div><dt>Front end</dt><dd><span>Next.js 14</span><span>React</span><span>Tailwind CSS</span></dd></div><div><dt>Data</dt><dd><span>Supabase</span><span>PostgreSQL</span><span>Cloudinary</span></dd></div><div><dt>Automation</dt><dd><span>Python</span><span>Playwright</span><span>PyMuPDF</span><span>Claude API</span><span>Flask</span><span>Telegram Bot</span></dd></div><div><dt>SEO, AEO, GEO</dt><dd><span>Server rendering</span><span>JSON-LD</span><span>FAQ schema</span><span>AEO copy</span><span>Google Indexing API</span><span>Dynamic sitemap</span></dd></div><div><dt>Hosting</dt><dd><span>Vercel</span></dd></div></dl>
     <div class="foot"><span class="role">Solo: architecture, build, launch<i></i>Live, refreshes weekly</span><span class="link"><a href="https://offplansearchuae.com" target="_blank" rel="noopener">Visit offplansearchuae.com ↗</a></span></div>
   </div>
-</article><article class="card wide">
+</article><article class="card wide" data-category="websites automation">
   <div class="shot"><img src="images/elysian-com.jpg" alt="elysian.com homepage with Dubai skyline and property search" width="1400" height="746" loading="lazy" decoding="async"></div>
   <div class="body">
     <div class="meta"><span>Elysian Real Estate</span><span class="pill">Brokerage website</span></div>
@@ -117,7 +127,7 @@
     <dl class="tech"><div><dt>Front end</dt><dd><span>Astro SSR</span><span>React islands</span><span>Tailwind CSS</span></dd></div><div><dt>Back end</dt><dd><span>Laravel API</span><span>MySQL</span></dd></div><div><dt>AI and CRM</dt><dd><span>Claude API</span><span>Salesforce</span></dd></div><div><dt>SEO, AEO, GEO</dt><dd><span>Server rendering</span><span>JSON-LD</span><span>Geo tags</span><span>Canonical URLs</span><span>Dynamic sitemaps</span><span>X-Robots-Tag</span></dd></div><div><dt>Hosting and data</dt><dd><span>Cloudflare Workers</span><span>Search Console</span><span>GA4</span><span>GTM</span><span>Clarity</span></dd></div></dl>
     <div class="foot"><span class="role">Solo: front end and back end<i></i>Live</span><span class="link"><a href="https://elysian.com" target="_blank" rel="noopener">Visit elysian.com ↗</a></span></div>
   </div>
-</article><article class="card">
+</article><article class="card" data-category="websites leads">
   <div class="shot"><img src="images/landing-page.jpg" alt="Dubai Waterfront Properties campaign landing page" width="1400" height="746" loading="lazy" decoding="async"></div>
   <div class="body">
     <div class="meta"><span>Elysian Real Estate</span><span class="pill">Lead generation</span></div>
@@ -128,7 +138,7 @@
     <dl class="tech"><div><dt>Build</dt><dd><span>Astro</span><span>HTML/CSS</span><span>Tailwind CSS</span></dd></div><div><dt>Leads</dt><dd><span>Zapier</span><span>Mailchimp</span><span>Salesforce</span></dd></div><div><dt>Tracking</dt><dd><span>GTM</span><span>GA4</span></dd></div></dl>
     <div class="foot"><span class="role">Design and build<i></i>Live</span><span class="link"><a href="https://elysian.com/dubai-waterfront-properties" target="_blank" rel="noopener">See the waterfront page ↗</a></span></div>
   </div>
-</article><article class="card">
+</article><article class="card" data-category="websites">
   <div class="shot"><img src="images/elysian-developments.jpg" alt="Elysian Developments homepage, Design for Well-Being" width="1400" height="746" loading="lazy" decoding="async"></div>
   <div class="body">
     <div class="meta"><span>Elysian Developments</span><span class="pill">Brand websites</span></div>
@@ -139,7 +149,7 @@
     <dl class="tech"><div><dt>Front end</dt><dd><span>Astro</span><span>React</span><span>Tailwind CSS</span></dd></div><div><dt>Back end</dt><dd><span>Laravel Filament</span><span>PHP</span><span>MySQL</span></dd></div></dl>
     <div class="foot"><span class="role">Build, speed and SEO<i></i>Live</span><span class="link"><a href="https://elysiandevelopments.com" target="_blank" rel="noopener">Visit elysiandevelopments.com ↗</a></span></div>
   </div>
-</article><article class="card">
+</article><article class="card" data-category="systems">
   <div class="shot"><img src="images/admin-panel.jpg" alt="Laravel Filament admin panel with agents, area guides and translations" width="1400" height="746" loading="lazy" decoding="async"></div>
   <div class="body">
     <div class="meta"><span>Elysian Developments</span><span class="pill">Internal system</span></div>
@@ -150,7 +160,7 @@
     <dl class="tech"><div><dt>Stack</dt><dd><span>Laravel</span><span>Filament v3</span><span>PHP 8</span><span>MySQL</span></dd></div></dl>
     <div class="foot"><span class="role">Solo build<i></i>In daily use</span><span class="link"><span>Internal system</span></span></div>
   </div>
-</article><article class="card">
+</article><article class="card" data-category="systems automation">
   <div class="shot"><img src="images/birigroup.jpg" alt="Biri Group website with product banner" width="1400" height="746" loading="lazy" decoding="async"></div>
   <div class="body">
     <div class="meta"><span>Biri Group Trading</span><span class="pill">E-commerce and operations</span></div>
@@ -161,7 +171,7 @@
     <dl class="tech"><div><dt>Stack</dt><dd><span>PHP CodeIgniter</span><span>MySQL</span><span>jQuery</span><span>AJAX</span><span>Bootstrap</span></dd></div></dl>
     <div class="foot"><span class="role">Sole developer and IT lead<i></i>Live</span><span class="link"><a href="https://www.birigroup.com" target="_blank" rel="noopener">Visit birigroup.com ↗</a></span></div>
   </div>
-</article><article class="card">
+</article><article class="card" data-category="websites">
   <div class="shot"><img src="images/planworks.jpg" alt="Planworks company website" width="1400" height="746" loading="lazy" decoding="async"></div>
   <div class="body">
     <div class="meta"><span>Planworks Communications</span><span class="pill">Company website</span></div>
