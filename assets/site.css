@@ -394,3 +394,56 @@ ul,ol{margin:0;padding:0}
 @media (prefers-reduced-motion:reduce){
   .card,.card:hover,.shot img,.card:hover .shot img{transform:none;transition:none}
 }
+
+
+/* Case-study storytelling: make the problem and implementation easy to scan. */
+.case-summary{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:4px 0 8px;
+}
+.case-summary>div{
+  min-width:0;
+  padding:13px 14px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:color-mix(in srgb,var(--surface) 76%,var(--bg));
+}
+.case-summary span{
+  display:block;
+  margin-bottom:5px;
+  color:var(--brand);
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.09em;
+  line-height:1.3;
+  text-transform:uppercase;
+}
+.case-summary p{
+  margin:0;
+  color:var(--muted);
+  font-size:.84rem;
+  line-height:1.55;
+}
+.card .win{
+  position:relative;
+  padding-left:13px;
+}
+.card .win::before{
+  content:"";
+  position:absolute;
+  top:.28em;
+  bottom:.28em;
+  left:0;
+  width:3px;
+  border-radius:3px;
+  background:var(--brand);
+}
+@media (max-width:600px){
+  .case-summary{grid-template-columns:1fr;gap:8px}
+  .case-summary>div{padding:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .case-summary{scroll-behavior:auto}
+}
