@@ -808,3 +808,64 @@ body{font-size:16px;line-height:1.65}
  #faq .head h2{max-width:13ch}
  #faq .faq summary{padding-block:19px;font-size:1rem}
 }
+
+
+/* Business outcomes: explain the practical value without detached vanity metrics */
+#results{background:var(--bg)}
+#results .head{grid-template-columns:minmax(0,1.05fr) minmax(280px,.82fr);gap:24px 64px;align-items:end;margin-bottom:34px}
+#results .head h2{max-width:15ch}
+#results .head>p{max-width:48ch;justify-self:end}
+#results .outcome-list{border-top:1px solid var(--line)}
+#results .outcome-row{
+  display:grid;
+  grid-template-columns:minmax(145px,.55fr) minmax(0,1.3fr) minmax(230px,.85fr);
+  align-items:start;
+  gap:28px;
+  padding:28px 0 30px;
+  border-bottom:1px solid var(--line);
+}
+#results .outcome-type{padding-top:6px}
+#results .outcome-type span{
+  display:inline-block;
+  color:var(--brand);
+  font-size:.73rem;
+  line-height:1.5;
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+#results .outcome-main h3{
+  margin:0 0 10px;
+  font-size:clamp(1.18rem,1.55vw,1.48rem);
+  letter-spacing:-.035em;
+  line-height:1.28;
+  max-width:29ch;
+}
+#results .outcome-main p,
+#results .outcome-scope p{color:var(--muted);font-size:.94rem;line-height:1.75}
+#results .outcome-scope{border-left:2px solid var(--brand-tint);padding:3px 0 3px 20px}
+#results .outcome-scope>span{
+  display:block;
+  color:var(--ink);
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+@media(max-width:900px){
+  #results .head{grid-template-columns:minmax(0,1fr) minmax(240px,.85fr);gap:24px}
+  #results .outcome-row{grid-template-columns:155px minmax(0,1fr);gap:16px 28px}
+  #results .outcome-main{grid-column:2}
+  #results .outcome-scope{grid-column:2}
+  #results .outcome-type{grid-column:1;grid-row:1/3}
+}
+@media(max-width:640px){
+  #results .head{grid-template-columns:1fr;gap:14px;margin-bottom:25px}
+  #results .head>p{justify-self:start;max-width:56ch}
+  #results .outcome-row{grid-template-columns:1fr;gap:10px;padding:22px 0 24px}
+  #results .outcome-type,#results .outcome-main,#results .outcome-scope{grid-column:1;grid-row:auto}
+  #results .outcome-type{padding:0}
+  #results .outcome-main h3{max-width:unset;font-size:1.18rem}
+  #results .outcome-scope{margin-top:3px;padding-left:14px}
+}
