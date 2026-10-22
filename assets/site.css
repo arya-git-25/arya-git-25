@@ -655,3 +655,127 @@ body{background:var(--bg);font-size:16px;letter-spacing:-.012em}
   #process .steps h3{align-self:end}
   #process .steps p{grid-column:2}
 }
+
+
+/* Cohesive homepage refinement: clearer hierarchy, quieter surfaces, consistent rhythm */
+:root{
+  --bg:#FBFAF8;
+  --surface:#FFFFFF;
+  --ink:#19201F;
+  --muted:#5F6967;
+  --line:#E2E5E0;
+  --brand:#0F6D6A;
+  --brand-ink:#0B5552;
+  --brand-tint:#E8F3F0;
+  --sand:#F5F1E9;
+  --sand-ink:#75634B;
+  --on-brand:#FFFFFF;
+  --r:16px;
+}
+body{font-size:16px;line-height:1.65}
+.wrap{max-width:1320px}
+.site-head{background:color-mix(in srgb,var(--bg) 94%,transparent)}
+.site-head .wrap{height:74px}
+.logo{font-size:1rem}
+.menu{gap:clamp(16px,2.2vw,30px)}
+.menu a{font-size:.9rem;font-weight:500}
+.section{padding-block:clamp(64px,7.5vw,100px)}
+.section.tint{background:#F5F3ED}
+.section.teal{background:#F0F5F2;color:var(--ink)}
+.head{grid-template-columns:minmax(0,1.1fr) minmax(240px,.7fr);gap:28px 64px;margin-bottom:36px}
+.head h2,.contact h2{font-size:clamp(2.25rem,4.2vw,3.8rem);line-height:1.03;letter-spacing:-.055em;max-width:15ch}
+.head>p{font-size:1.02rem;max-width:43ch;line-height:1.75}
+.kicker{font-size:.75rem;letter-spacing:.12em;margin-bottom:14px;color:var(--brand)}
+.hero{padding-block:clamp(44px,6vw,76px) clamp(60px,7vw,88px)}
+.hero .wrap{grid-template-columns:minmax(0,1.08fr) minmax(320px,.82fr);gap:clamp(36px,6vw,84px)}
+.hero h1{font-size:clamp(3.15rem,5.5vw,5.15rem);line-height:.99;letter-spacing:-.065em;max-width:12ch}
+.hero h1 em{color:var(--brand)}
+.hero h1 .kicker{font-size:1rem;line-height:1.45;letter-spacing:-.01em;text-transform:none;font-weight:500;color:var(--muted);max-width:unset;margin-bottom:16px}
+.hero .lead{max-width:54ch;font-size:1.08rem;line-height:1.75;margin-top:24px}
+.hero .cta{margin-top:28px}
+.btn{min-height:48px;border-radius:9px;font-weight:600}
+.btn-primary{box-shadow:0 4px 12px -8px rgba(15,109,106,.7)}
+.portrait{border-radius:22px;box-shadow:none;border:1px solid #DCE6E1;aspect-ratio:4/4.25}
+.portrait .tag{border:1px solid var(--line);box-shadow:0 8px 24px -20px rgba(0,0,0,.35)}
+.clients{background:#fff;border-block:1px solid var(--line);padding-block:8px;color:var(--ink)}
+.clients .wrap{display:flex;grid-template-columns:unset;gap:16px 34px;padding-block:22px}
+.clients p{color:var(--muted);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.clients li{color:var(--ink);font-size:.98rem;font-weight:600}
+.results{gap:16px}
+.result{padding:26px;border-radius:14px;box-shadow:none}
+.result .num{font-size:clamp(2.5rem,3.8vw,3.8rem);letter-spacing:-.065em}
+.result h3{font-size:1.08rem;line-height:1.35}
+.result p{line-height:1.7}
+.project-tools{background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:22px}
+.filter-btn{border-radius:8px}
+.filter-btn[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.work{gap:18px}
+.card,.card.wide{border-color:var(--line);border-radius:15px;box-shadow:none}
+.card:hover{transform:translateY(-2px);border-color:#B6D2CA;box-shadow:0 12px 32px -26px rgba(18,60,52,.25)}
+.card .body,.card.wide .body{padding:clamp(22px,2.5vw,32px);gap:12px}
+.card h3{font-size:clamp(1.35rem,2vw,1.9rem);line-height:1.12;letter-spacing:-.045em}
+.card .win{color:var(--brand-ink);font-size:.96rem}
+.card .desc{line-height:1.7}
+.card.wide .shot{aspect-ratio:16/7}
+.card .link a{font-weight:600}
+.pill{background:var(--brand-tint);color:var(--brand-ink)}
+.case-summary>div,.tech{background:#F7F7F3!important;border-color:var(--line)!important}
+.case-summary p,.points li{color:#505A57}
+.service{border-radius:14px;padding:24px;background:#fff;box-shadow:none}
+.service:hover{transform:translateY(-2px);border-color:#B6D2CA;box-shadow:0 12px 32px -26px rgba(18,60,52,.2)}
+.service .ic{width:42px;height:42px;border-radius:10px;background:var(--brand-tint)}
+.service h3{font-size:1.18rem;line-height:1.3;letter-spacing:-.025em}
+.service p{line-height:1.7}
+#process{background:#F5F3ED}
+#process .head{margin-bottom:30px}
+#process .steps{gap:14px}
+#process .steps li{padding:24px;background:#fff;border:1px solid var(--line);border-radius:14px;gap:12px}
+#process .steps li::before{background:var(--brand-tint);color:var(--brand);border-radius:10px;width:44px;height:44px;font-size:.98rem}
+#process .steps h3{font-size:1.1rem;line-height:1.35;min-height:2.7em}
+#process .steps p{font-size:.92rem;line-height:1.7}
+.about{gap:clamp(36px,6vw,80px)}
+.bio p{line-height:1.75}
+.timeline li{padding-block:18px}
+.faq{max-width:920px}
+.faq summary{font-size:1.02rem;line-height:1.5;padding-block:22px}
+.faq .a{line-height:1.75}
+.contact{background:#0F6D6A}
+.contact::before{background:radial-gradient(ellipse at 95% 0%,rgba(255,255,255,.09),transparent 38%)}
+.contact h2{max-width:12ch}
+.contact .ways a{border-radius:12px}
+.site-foot{background:#19201F}
+.site-foot .base{border-color:rgba(255,255,255,.16)}
+:focus-visible{outline-offset:4px}
+@media(max-width:1050px){
+ .hero .wrap{grid-template-columns:minmax(0,1fr) minmax(280px,.8fr);gap:32px}
+ .hero h1{font-size:clamp(3rem,6vw,4.5rem)}
+ .head{gap:22px}
+}
+@media(max-width:860px){
+ .hero .wrap{grid-template-columns:1fr}
+ .hero h1{font-size:clamp(3.2rem,9vw,5rem)}
+ .portrait{max-width:500px}
+ .head{grid-template-columns:1fr}
+ .head h2{max-width:18ch}
+ .clients .wrap{display:flex;flex-direction:column;align-items:flex-start}
+ #process .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #process .steps h3{min-height:0}
+}
+@media(max-width:600px){
+ .site-head .wrap{height:64px}
+ .logo{font-size:.9rem}
+ .site-head .btn{font-size:.8rem;padding-inline:12px}
+ .hero{padding-block:38px 58px}
+ .hero h1{font-size:clamp(2.8rem,12vw,4rem);line-height:1.01}
+ .hero .lead{font-size:1rem}
+ .section{padding-block:62px}
+ .head{margin-bottom:26px}
+ .head h2{font-size:clamp(2.2rem,10.5vw,3.2rem)}
+ .card .body,.card.wide .body{padding:20px}
+ #process .steps{grid-template-columns:1fr;gap:12px}
+ #process .steps li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:14px;row-gap:5px;padding:18px}
+ #process .steps li::before{grid-row:1/3;margin:0}
+ #process .steps h3{align-self:end}
+ #process .steps p{grid-column:2}
+ .service{padding:22px}
+}
