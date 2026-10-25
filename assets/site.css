@@ -16,9 +16,8 @@
   --font:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --max:1200px; --gut:32px; --r:16px;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0F1214;--surface:#161A1D;--ink:#ECEEF0;--muted:#9AA3AD;--line:#262C31;--brand:#4FC1B9;--brand-ink:#7FD6CF;--brand-tint:#132E2C;--sand:#241F18;--sand-ink:#D9B987;--on-brand:#06201F;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0F1214;--surface:#161A1D;--ink:#ECEEF0;--muted:#9AA3AD;--line:#262C31;--brand:#4FC1B9;--brand-ink:#7FD6CF;--brand-tint:#132E2C;--sand:#241F18;--sand-ink:#D9B987;--on-brand:#06201F;color-scheme:dark}
+/* The visual design is intentionally light; do not auto-switch text tokens on dark OS settings. */
+:root{color-scheme:light}
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
